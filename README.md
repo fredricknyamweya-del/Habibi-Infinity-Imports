@@ -2,8 +2,6 @@
 
 Luxury import and resale e-commerce storefront for East Africa, serving customers in **Kenya (KES)** and **Tanzania (TZS)**. Offices: Dar es Salaam and Nairobi.
 
-> **Status: front-end prototype.** The repo currently contains one fully designed **Home** page with mock data. There is no router, no backend integration and no state persistence beyond a theme preference. Section 3 lists what is built; sections 5 to 9 define what the backend and remaining screens must deliver.
-
 ---
 
 ## 1. Tech stack
