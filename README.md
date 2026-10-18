@@ -53,31 +53,90 @@ is currently configured.
 
 ```
 .
+├── .gitignore
 ├── README.md
-├── frontend/
-│   ├── index.html
-│   ├── package.json / package-lock.json
-│   ├── jsconfig.json / vite.config.js
-│   ├── public/
-│   ├── tests/
-│   └── src/
-│       ├── main.jsx
-│       ├── app/             # app entry, router, providers, layouts
-│       ├── api/             # API client and resource modules
-│       ├── components/      # shared UI, catalog, layout, ads, home
-│       ├── features/        # auth, cart, product, checkout, orders, admin
-│       ├── pages/
-│       ├── hooks/
-│       ├── lib/
-│       ├── store/
-│       ├── styles/
-│       └── assets/
-└── backend/
-    ├── Pipfile / Pipfile.lock
-    ├── schema.prisma / migrations/ / seed/
-    ├── docs/
+├── backend/
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── Pipfile
+│   ├── Pipfile.lock
+│   ├── docs/
+│   │   ├── openapi.yaml
+│   │   └── payments.md
+│   ├── migrations/
+│   │   └── .gitkeep
+│   ├── seed/
+│   │   ├── categories.js
+│   │   ├── index.js
+│   │   ├── products.js
+│   │   └── regions.js
+│   ├── src/
+│   │   ├── app.js
+│   │   ├── server.js
+│   │   ├── config/
+│   │   ├── jobs/
+│   │   ├── lib/
+│   │   ├── middleware/
+│   │   └── modules/
+│   │       ├── admin/
+│   │       ├── ads/
+│   │       ├── auth/
+│   │       ├── cart/
+│   │       ├── categories/
+│   │       ├── checkout/
+│   │       ├── contact/
+│   │       ├── home/
+│   │       ├── newsletter/
+│   │       ├── orders/
+│   │       ├── payments/
+│   │       │   └── providers/
+│   │       ├── products/
+│   │       ├── users/
+│   │       ├── webhooks/
+│   │       └── wishlist/
+│   └── tests/
+│       ├── fixtures/.gitkeep
+│       ├── integration/.gitkeep
+│       └── unit/.gitkeep
+└── frontend/
+    ├── .env.example
+    ├── .gitignore
+    ├── index.html
+    ├── jsconfig.json
+    ├── package.json
+    ├── package-lock.json
+    ├── vite.config.js
+    ├── public/
+    │   └── favicon.svg
     ├── tests/
-    └── src/                 # JavaScript-named backend scaffold
+    │   ├── e2e/.gitkeep
+    │   └── unit/.gitkeep
+    └── src/
+        ├── main.jsx
+        ├── api/
+        ├── app/
+        │   └── layouts/
+        ├── assets/
+        │   ├── icons/.gitkeep
+        │   └── images/.gitkeep
+        ├── components/
+        │   ├── ads/
+        │   ├── catalog/
+        │   ├── home/
+        │   ├── layout/
+        │   └── ui/
+        ├── features/
+        │   ├── admin/
+        │   ├── auth/
+        │   ├── cart/
+        │   ├── checkout/
+        │   ├── orders/
+        │   └── product/
+        ├── pages/
+        ├── hooks/
+        ├── lib/
+        ├── store/
+        └── styles/
 ```
 
 The application source files and the Vite/JavaScript configuration files are
