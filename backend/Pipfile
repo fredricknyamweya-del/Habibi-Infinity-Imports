@@ -1,0 +1,32 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+flask-cors = "*"
+flask-jwt-extended = "*"
+flask-bcrypt = "*"
+sqlalchemy = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
+marshmallow = "*"
+requests = "*"
+gunicorn = "*"
+
+[dev-packages]
+pytest = "*"
+faker = "*"
+
+[requires]
+python_version = "3.12"
+
+[scripts]
+dev = "flask --app app run --debug --port 5000"
+migrate = "flask --app app db migrate"
+upgrade = "flask --app app db upgrade"
+seed = "python seed.py"
+prod = "gunicorn app:app"
