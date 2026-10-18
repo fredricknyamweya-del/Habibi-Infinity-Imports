@@ -6,56 +6,90 @@ Luxury import and resale e-commerce storefront for East Africa, serving customer
 
 ## 1. Tech stack
 
-| Layer | Choice | Notes |
-|---|---|---|
-| UI | React 19 + TypeScript 5.7 | Function components, hooks |
-| Build | Vite 8, `@vitejs/plugin-react` | `@` alias maps to `src/` |
-| Styling | Tailwind CSS v4 (`@tailwindcss/vite`) + hand-written CSS in `src/index.css` | Tailwind is imported, but components currently use plain class names, not utilities |
-| Fonts | Playfair Display (headings), Inter (body) via Google Fonts `@import` | |
-| Package manager | pnpm 10.34.3, Node 22 (see `.mise.toml`) | |
-| Formatter | `oxfmt` | `pnpm format` |
+### Frontend
 
-### Scripts
+| Layer | Technology | Declared version / details |
+|---|---|---|
+| Language | JavaScript (ES modules) and JSX | No TypeScript configuration or source files |
+| UI | React and React DOM | `^18.3.1` |
+| Build and dev server | Vite with `@vitejs/plugin-react` | `vite ^8.3.4`, plugin `^4.3.2` |
+| Routing | React Router DOM | `^7.18.4` |
+| HTTP client | Axios | `^1.7.7` |
+| Styling | Bootstrap, React Bootstrap, Tailwind CSS, and project CSS | `bootstrap ^5.3.3`, `react-bootstrap ^2.10.5`, `tailwindcss ^4.3.3` |
+| UI utilities | Framer Motion, React Icons, React Hot Toast, Swiper | Versions are declared in `frontend/package.json` |
+| Package manager | npm | `frontend/package-lock.json` is present |
+
+The JavaScript module format is ES modules (`"type": "module"` in
+`frontend/package.json`). The project does not currently pin a Node.js version.
+The Vite configuration and JavaScript configuration files are present but empty,
+so aliases and CSS tooling are not configured there yet.
+
+### Backend status
+
+The backend source tree is named with JavaScript `.js` files, but its dependency
+manifests (`backend/Pipfile` and `backend/Pipfile.lock`) declare Python 3.12 and
+Flask. There is no `backend/package.json` at present. The backend runtime is
+therefore not consistently defined; choose either a JavaScript/Node.js backend
+or a Python/Flask backend before implementing or running it.
+
+### Frontend scripts
+
+Run these commands from `frontend/`:
 
 ```bash
-pnpm install
-pnpm dev        # Vite dev server, default port 8443 (strictPort), host 0.0.0.0
-pnpm build      # production build to dist/
-pnpm preview    # serve the production build
-pnpm format     # oxfmt
+npm install
+npm run dev
+npm run build
+npm run preview
+npm run lint
 ```
 
-Set `PORT` to change the dev port. `FIGMA_PUBLIC_URL` sets the Vite `base` when deployed under a sub-path.
-
-> The `.figma/` folder and the `figma*` plugins in `vite.config.ts` are Figma Make tooling (preview, deploy, error overlay). They are not needed in production. When moving off Figma Make, remove those plugins and the `.figma/` folder, and replace the `<!-- figma:* -->` slots in `index.html` with real `<title>`, `lang` and meta tags.
+These are the scripts declared in `frontend/package.json`. No formatter script
+is currently configured.
 
 ---
 
-## 2. Project structure (current)
+## 2. Project structure (current scaffold)
 
 ```
 .
-├── index.html              # Vite shell (contains figma:* placeholder comments)
-├── vite.config.ts          # React, Tailwind, Figma Make plugins, "@" alias
-├── tsconfig.json
-├── package.json / pnpm-lock.yaml
-├── public/favicon.svg
-├── src/
-│   ├── main.tsx            # Mounts <App /> in StrictMode
-│   ├── App.tsx             # ENTIRE UI: icons, data, components, page (356 lines)
-│   ├── index.css           # Design tokens, all component styles, light theme (457 lines)
-│   └── vite-env.d.ts
-├── .figma/make/            # Figma Make scripts and site.json (not app code)
-├── AGENTS.md / CLAUDE.md   # AI-agent project notes
-└── .mise.toml              # node 22, pnpm 10.34.3
+├── README.md
+├── frontend/
+│   ├── index.html
+│   ├── package.json / package-lock.json
+│   ├── jsconfig.json / vite.config.js
+│   ├── public/
+│   ├── tests/
+│   └── src/
+│       ├── main.jsx
+│       ├── app/             # app entry, router, providers, layouts
+│       ├── api/             # API client and resource modules
+│       ├── components/      # shared UI, catalog, layout, ads, home
+│       ├── features/        # auth, cart, product, checkout, orders, admin
+│       ├── pages/
+│       ├── hooks/
+│       ├── lib/
+│       ├── store/
+│       ├── styles/
+│       └── assets/
+└── backend/
+    ├── Pipfile / Pipfile.lock
+    ├── schema.prisma / migrations/ / seed/
+    ├── docs/
+    ├── tests/
+    └── src/                 # JavaScript-named backend scaffold
 ```
 
-### Recommended target structure
+The application source files and the Vite/JavaScript configuration files are
+currently empty scaffolding. The package manifests declare dependencies, but
+the structure does not yet represent a runnable storefront or API.
+
+### Frontend source organization
 
 ```
 src/
-├── app/                    # router, providers, layouts
-├── api/                    # typed client + per-resource modules (products.ts, cart.ts, ...)
+├── app/                    # app entry, router, providers, layouts
+├── api/                    # JavaScript client and per-resource modules
 ├── components/
 │   ├── ui/                 # Button, Input, Select, Stepper, Badge, Toast, StatusChip, Skeleton
 │   ├── catalog/            # ProductCard, CategoryRow, CategoryCard, FilterSidebar
@@ -64,65 +98,54 @@ src/
 ├── features/               # cart, checkout, auth, wishlist, orders, admin
 ├── hooks/                  # useCountry, useCart, useDebounce
 ├── pages/                  # Home, Catalogue, Product, Cart, Checkout, Confirmation, Admin
-├── lib/                    # money.ts, format.ts, analytics.ts
+├── lib/                    # money.js, format.js, analytics.js
 └── styles/tokens.css
 ```
 
 ---
 
-## 3. What is built today vs. what is missing
+## 3. Implementation status
 
-### Built (Home page only)
+The frontend and backend source trees currently contain empty scaffold files.
+The dependencies and folder layout establish an intended React storefront, but
+no UI, API, or backend behavior has been implemented yet. The feature lists,
+design notes, and API contract below describe the planned product rather than
+features that are already working.
 
-- Announcement bar (free delivery thresholds: KES 15,000 / TZS 250,000)
-- Sticky navbar: logo, Categories trigger, New arrivals / Featured deals anchors, search input, KE/TZ switcher, theme toggle, cart badge, "Shop now"
-- Hero with the headline, gold "across East Africa" emphasis, Shop Collection and WhatsApp buttons, and a rotating **motion preview** (4 slides, 4.2s interval, dots, float animation, labelled "Coded motion preview")
-- Trust strip (M-Pesa, KE and TZ delivery, 100% genuine, easy returns)
-- Shop by Category: 7 cards with gold numerals
-- Numbered category accordion (`CategoryList`) inside a slide-in mega-menu drawer
-- One "Sponsored" ad banner
-- Product cards (image, badge, wishlist heart, rating, price, Add), 8 products across "Popular" and "New arrivals"
-- Editorial block, newsletter form, footer with both phone numbers
-- Cart drawer with empty state, line items, remove, subtotal, toast on add
-
-### Not built (required)
+### Planned features not implemented
 
 | Area | Gap |
 |---|---|
-| Routing | No router. Needs `/`, `/shop`, `/shop/:category`, `/p/:slug`, `/cart`, `/checkout`, `/order/:number`, `/admin/*` |
-| Catalogue | Filter sidebar, sort, pagination |
-| Product detail | Gallery, variants, stepper, delivery estimate, tabs, related |
-| Cart | Full page, quantity controls (items are appended as duplicates, `Qty` is hard-coded to 1), promo code, shipping estimate |
-| Checkout | 3 steps, progress bar, delivery methods, payment, review |
-| Confirmation | Order page and tracking |
-| Admin | Products, orders, ad manager |
-| Ad slots | 728x90 leaderboard and an in-grid promo card per the brief (only a full-width banner exists) |
-| Featured Deals | Row missing (`#deals` currently points at the editorial block) |
-| Components/states | Skeleton shimmer, out-of-stock, disabled button, status chips, dropdown, quantity stepper, input components |
-| Category menu | Rows only show/hide the subcategory text. Subcategories are not clickable links, and the same component is not yet used in the catalogue sidebar |
-| Search | Input is not wired up (the `⌘ K` hint has no handler) |
-| Wishlist | Heart toggles local state only |
-| Persistence | Cart is lost on refresh. Only the theme is stored (`localStorage["habibi-theme"]`) |
-| WhatsApp / socials | Buttons have no links |
+| Routing | Implement `/`, `/shop`, `/shop/:category`, `/p/:slug`, `/cart`, `/checkout`, `/order/:number`, and `/admin/*` |
+| Catalogue | Build category browsing, filters, sorting, and pagination |
+| Product detail | Build image gallery, variants, quantity control, delivery estimate, tabs, and related products |
+| Cart | Implement cart lines, quantity updates, persistence, promo codes, and shipping estimates |
+| Checkout | Implement shipping, delivery methods, payment, and order review |
+| Confirmation | Add order confirmation and tracking |
+| Admin | Add product, order, and ad management |
+| Ads | Implement leaderboard and in-grid placements, plus impression and click tracking |
+| Shared UI | Implement reusable form controls, feedback, loading, and status components |
+| Search and wishlist | Connect search and wishlist behavior to application state and the API |
+| Integrations | Connect newsletter, WhatsApp, and social links |
 
-### Known issues in the prototype
+### Implementation requirements
 
-1. **Light theme exists, but the brief specifies dark mode only.** The toggle and the `.app.light` overrides in `index.css` need a product decision: remove them or keep them as an intentional extra.
-2. **Currency conversion is hard-coded.** `formatPrice` computes KES as `TZS price / 17`. Real prices must come from the API per country (section 6.1). Do not derive one currency from the other on the client.
-3. **Prices are stored as numbers in whole TZS.** Use integer minor units and ISO currency codes from the API (section 5.2).
-4. **Rating is a string** (`"4.9"`). It should be a number plus a review count.
-5. **Product identity is the name.** Cart and list keys use `product.name`. Use stable `id`/`sku`.
-6. **Product images are hot-linked from Unsplash.** Replace with owned assets on a CDN.
-7. **Copyright year** in the footer and the "HABIBI / 2025" label are hard-coded.
-8. Badges use `BESTSELLER` and `LIMITED`, which are not in the spec's `Sale / New / Sponsored` set. Align the badge enum with the API (section 5.3).
-9. Footer phone `+254 110 378 48` should be confirmed against the brief's `+254 11037848`.
-10. `<button>` elements are used for navigation and category cards. Switch to `<a>`/router links for SEO and accessibility once routing exists.
+1. **Theme behavior is undecided.** Choose whether the storefront should support a light theme or dark mode only before implementing styles.
+2. **Use country-specific prices.** Prices must come from the API per country (section 6.1); do not derive one currency from the other on the client.
+3. **Represent money consistently.** Use integer minor units and ISO currency codes in the API (section 5.2).
+4. **Use structured ratings.** Represent ratings numerically and include a review count.
+5. **Use stable product identifiers.** Use product IDs or SKUs rather than product names as identity.
+6. **Use owned product imagery.** Serve approved assets from a controlled CDN.
+7. **Keep content current.** Avoid hard-coded copyright years in the footer.
+8. **Align badges with the API.** Use the agreed badge set (section 5.3).
+9. **Confirm contact details.** Verify the Kenya and Tanzania phone numbers before launch.
+10. **Use semantic navigation.** Use links or router links for navigation, not buttons.
 
 ---
 
 ## 4. Design system
 
-Tokens live as CSS variables in `src/index.css` (`:root`):
+The planned design tokens should live as CSS variables in `src/styles/tokens.css`:
 
 | Token | Value | Use |
 |---|---|---|
@@ -138,13 +161,14 @@ Tokens live as CSS variables in `src/index.css` (`:root`):
 
 Rules: Playfair Display for headings and numerals, Inter for body; 12px card radius; 1px gold borders; subtle gold glow on hover; 8px spacing scale; 12-column grid at 1440px (max content width 1440px, section padding `5.5vw`). Target viewports: **1440px desktop** and **390px mobile**.
 
-When porting to Tailwind utilities, expose the tokens through `@theme` in `index.css` (for example `--color-gold`, `--font-display`) so classes like `bg-obsidian text-ivory border-gold/20` work.
+If using Tailwind utilities, expose the tokens through `@theme` in `src/styles/tokens.css` (for example `--color-gold`, `--font-display`) so classes like `bg-obsidian text-ivory border-gold/20` work.
 
 ---
 
 ## 5. API contract
 
-The storefront needs a backend that does not exist yet. The contract below is a **proposal** for the backend team to confirm. It is derived from the screens in the design brief and the data shapes in `App.tsx`.
+The storefront needs a working backend API. The contract below is a **proposal**
+for the backend team to confirm, based on the storefront requirements.
 
 ### 5.1 Conventions
 
@@ -177,7 +201,7 @@ Never send floats. Money is an object in **minor units** with an ISO currency:
 { "amount": 18500000, "currency": "TZS" }
 ```
 
-> KES and TZS both display without decimals in the UI, but the API should still use minor units (KES uses 100 cents). Define and document the multiplier per currency, and apply it in one place (`lib/money.ts`).
+> KES and TZS both display without decimals in the UI, but the API should still use minor units (KES uses 100 cents). Define and document the multiplier per currency, and apply it in one place (`lib/money.js`).
 
 Each product stores **independent prices per country** (see `prices` below). Exchange-rate derivation belongs to the backend or to merchandising, not the client.
 
@@ -511,7 +535,7 @@ Product create body (prices per country):
 ### 6.1 Global
 
 - **Country switcher** must drive the `X-Country` header and refetch prices. Replace the hard-coded `/17` conversion. Persist the choice.
-- **Typed API client** in `src/api/` (fetch wrapper, error normalisation, auth refresh). Use a data-fetching library (TanStack Query recommended) for caching and skeleton states.
+- **JavaScript API client** in `src/api/` (HTTP client, error normalisation, auth refresh). Use a data-fetching library (TanStack Query recommended) for caching and skeleton states.
 - **Cart state** is server-backed (`/cart`). Optimistic updates for quantity changes.
 - **Routing** with a router that supports lazy loading and scroll restoration.
 - **Toast** system (replace the single `toast` string state with a queue).
@@ -594,8 +618,8 @@ Secrets (M-Pesa consumer keys, passkey, card secret keys, webhook secrets) belon
 
 ## 10. Suggested delivery order
 
-1. Split `App.tsx` into components and extract tokens to `@theme`; add router.
-2. Typed API client, `GET /categories`, `GET /home`, country context.
+1. Implement the JavaScript React app entry, shared layouts, router, and design tokens.
+2. Add a JavaScript API client, `GET /categories`, `GET /home`, and country context.
 3. Catalogue and product detail.
 4. Server-backed cart (drawer and page), promo codes.
 5. Checkout and M-Pesa STK flow (Kenya first, then Tanzania), confirmation and tracking.
