@@ -4,6 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { FiPhone } from 'react-icons/fi';
 import { site } from '../../config/site.js';
 import { useCountry } from '../../context/CountryContext.jsx';
+import { localizedCopy } from '../../utils/localization.js';
 
 export default function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
@@ -57,7 +58,7 @@ export default function FloatingWhatsApp() {
           role="group"
           transition={reducedMotion ? { duration: 0.01 } : { type: 'spring', stiffness: 420, damping: 20 }}
         >
-          <p className="mb-2 px-1 text-xs font-medium text-ivory">Need a hand in {countryName}?</p>
+          <p className="mb-2 px-1 text-xs font-medium text-ivory">{localizedCopy(country, `Need a hand in ${countryName}?`, `Unahitaji msaada nchini ${countryName}?`)}</p>
           <div className="flex items-center">
             <a
               aria-label={`Message Habibi Infinity Imports on WhatsApp in ${countryName}`}

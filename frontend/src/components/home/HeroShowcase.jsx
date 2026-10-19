@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import Button from '../ui/Button.jsx';
+import { useCountry } from '../../context/CountryContext.jsx';
+import { localizedCopy } from '../../utils/localization.js';
 
 const slides = [
   { title: 'A new season, beautifully considered.', subtitle: 'Discover pieces chosen for the way you live.', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=90' },
@@ -18,6 +20,8 @@ export default function HeroShowcase() {
   const [active, setActive] = useState(0);
   const [greetingKey, setGreetingKey] = useState(0);
   const reducedMotion = useReducedMotion();
+  const { country } = useCountry();
+  const isSwahili = country === 'TZ';
 
   useEffect(() => {
     if (reducedMotion) return undefined;
@@ -27,7 +31,7 @@ export default function HeroShowcase() {
 
   return (
     <section
-      aria-label="Featured collections"
+      aria-label={localizedCopy(country, 'Featured collections', 'Mikusanyiko iliyochaguliwa')}
       className="relative isolate overflow-hidden rounded-card border border-gold/20 bg-charcoal"
       onMouseEnter={() => swiper?.autoplay?.stop()}
       onMouseLeave={() => !reducedMotion && swiper?.autoplay?.start()}
@@ -70,24 +74,24 @@ export default function HeroShowcase() {
                     ))}
                   </span>
                 </motion.p>
-                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.3em] text-gold">A world of beautiful finds</p>
+                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.3em] text-gold">{localizedCopy(country, 'A world of beautiful finds', 'Dunia ya bidhaa nzuri')}</p>
                 <motion.h1
                   animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                   className="font-heading text-5xl leading-[1.1] text-ivory sm:text-6xl lg:text-7xl"
                   initial={reducedMotion ? undefined : { opacity: 0, y: 22 }}
                   transition={{ duration: 0.75, delay: 0.12 }}
                 >
-                  Imported Luxury. <span className="text-gold">Delivered</span> Across East Africa.
+                  {isSwahili ? <>Bidhaa za Kifahari. <span className="text-gold">Zinaletwa</span> Afrika Mashariki.</> : <>Imported Luxury. <span className="text-gold">Delivered</span> Across East Africa.</>}
                 </motion.h1>
-                <p className="mt-6 max-w-lg text-base leading-7 text-white md:text-lg">{slide.subtitle}</p>
+                <p className="mt-6 max-w-lg text-base leading-7 text-white md:text-lg">{isSwahili ? ['Gundua bidhaa zilizochaguliwa kwa maisha yako.', 'Pata kipenzi chako kipya, kilicholetwa kutoka duniani kote.', 'Anasa kidogo, ikiletwa hadi mlangoni kwako.'][active] : slide.subtitle}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Button to="/shop">Explore the collection</Button>
-                  <Button to="/shop?sort=newest" variant="ghost">New arrivals</Button>
+                  <Button to="/shop">{localizedCopy(country, 'Explore the collection', 'Gundua mkusanyiko')}</Button>
+                  <Button to="/shop?sort=newest" variant="ghost">{localizedCopy(country, 'New arrivals', 'Zilizowasili karibuni')}</Button>
                 </div>
-                <div className="mt-9 flex gap-2" role="group" aria-label="Choose featured slide">
+                <div className="mt-9 flex gap-2" role="group" aria-label={localizedCopy(country, 'Choose featured slide', 'Chagua ukurasa wa picha')}>
                   {slides.map((item, dotIndex) => (
                     <button
-                      aria-label={`Show slide ${dotIndex + 1}: ${item.title}`}
+                      aria-label={`${localizedCopy(country, 'Show slide', 'Onyesha picha')} ${dotIndex + 1}: ${item.title}`}
                       aria-pressed={active === dotIndex}
                       className={`h-1.5 rounded-full transition-all ${active === dotIndex ? 'w-10 bg-gold' : 'w-5 bg-white/35'}`}
                       key={item.title}
@@ -104,8 +108,8 @@ export default function HeroShowcase() {
               >
                 <Link aria-label="Explore the Habibi edit" className="block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold" to="/shop?sort=newest">
                   <img alt="A curated fashion look" className="h-48 w-full rounded-lg object-cover" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=500&q=85" />
-                  <p className="mt-3 text-xs uppercase tracking-widest text-gold">Curated for you</p>
-                  <p className="mt-1 font-heading text-lg">The edit <span aria-hidden="true">↗</span></p>
+                  <p className="mt-3 text-xs uppercase tracking-widest text-gold">{localizedCopy(country, 'Curated for you', 'Tumechagua kwa ajili yako')}</p>
+                  <p className="mt-1 font-heading text-lg">{localizedCopy(country, 'The edit', 'Chaguo letu')} <span aria-hidden="true">↗</span></p>
                 </Link>
               </motion.div>
             </div>
