@@ -5,7 +5,7 @@ import ContactCard from './ContactCard.jsx';
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-white/10 bg-charcoal/50">
+    <footer className="mt-20 border-t border-white/10 bg-charcoal/50" id="site-footer">
       <div className="page-shell grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Link aria-label="Habibi Imports home" className="font-heading text-2xl text-gold" to="/">Habibi Imports</Link>
