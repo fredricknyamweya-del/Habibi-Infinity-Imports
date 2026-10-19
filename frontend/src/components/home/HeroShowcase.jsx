@@ -16,7 +16,14 @@ const slides = [
 export default function HeroShowcase() {
   const [swiper, setSwiper] = useState(null);
   const [active, setActive] = useState(0);
+  const [greetingKey, setGreetingKey] = useState(0);
   const reducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (reducedMotion) return undefined;
+    const interval = window.setInterval(() => setGreetingKey((key) => key + 1), 10000);
+    return () => window.clearInterval(interval);
+  }, [reducedMotion]);
 
   return (
     <section
@@ -50,14 +57,18 @@ export default function HeroShowcase() {
                   initial={reducedMotion ? undefined : { opacity: 0, y: 10 }}
                   transition={{ duration: 0.55 }}
                 >
-                  <motion.span
-                    animate={reducedMotion ? undefined : { rotate: [0, 18, -8, 18, 0] }}
-                    aria-hidden="true"
-                    transition={reducedMotion ? undefined : { duration: 1.4, repeat: Infinity, repeatDelay: 2.5 }}
-                  >
-                    👋
-                  </motion.span>
-                  Karibu Customer!
+                  <span aria-label="Karibu Customer!" className="whitespace-pre" role="img">
+                    {Array.from('Karibu Customer!').map((character, index) => (
+                      <motion.span
+                        animate={{ opacity: 1, x: 0 }}
+                        initial={reducedMotion ? false : { opacity: 0, x: -16 }}
+                        key={`${greetingKey}-${index}`}
+                        transition={{ delay: reducedMotion ? 0 : index * 0.035, duration: 0.3, ease: 'easeOut' }}
+                      >
+                        {character === ' ' ? '\u00a0' : character}
+                      </motion.span>
+                    ))}
+                  </span>
                 </motion.p>
                 <p className="mb-5 text-xs font-semibold uppercase tracking-[0.3em] text-gold">A world of beautiful finds</p>
                 <motion.h1
