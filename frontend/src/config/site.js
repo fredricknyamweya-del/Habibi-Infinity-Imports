@@ -7,6 +7,11 @@ export const site = {
     { city: 'Nairobi', country: 'Kenya', code: 'KE' },
     { city: 'Dar es Salaam', country: 'Tanzania', code: 'TZ' },
   ],
+  pickupPoints: [
+    { name: 'Nairobi Shop', country: 'Kenya' },
+    { name: 'Mombasa Shop', country: 'Kenya' },
+    { name: 'Dar es Salaam spot', country: 'Tanzania' },
+  ],
   contacts: {
     TZ: {
       phone: tanzaniaPhone,

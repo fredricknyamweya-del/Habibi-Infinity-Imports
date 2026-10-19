@@ -1,4 +1,4 @@
-import { FiArrowUpRight, FiInstagram } from 'react-icons/fi';
+import { FiArrowUpRight, FiInstagram, FiMapPin } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { site } from '../../config/site.js';
 import ContactCard from './ContactCard.jsx';
@@ -23,6 +23,23 @@ export default function Footer() {
           <Link className="mt-3 block text-sm text-muted hover:text-gold" to="/track">Track your order</Link>
         </section>
       </div>
+      <section aria-labelledby="pickup-points-heading" className="page-shell pb-10">
+        <h2 className="font-heading text-2xl text-ivory" id="pickup-points-heading">Pickup points</h2>
+        <ul className="mt-4 grid list-none gap-3 p-0 sm:grid-cols-3">
+          {site.pickupPoints.map((point) => (
+            <li className="flex min-h-14 items-center gap-3 rounded-card border border-white/10 bg-charcoal px-4 py-3" key={point.name}>
+              <FiMapPin aria-hidden="true" className="shrink-0 text-gold" />
+              <span>
+                <span className="block text-sm font-semibold text-ivory">{point.name}</span>
+                <span className="mt-0.5 block text-xs text-muted">{point.country}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 max-w-4xl text-sm leading-6 text-muted">
+          Outside these shop locations, deliveries across the region are handled by trusted agents such as G4S, Wells Fargo, Easy Coach, and other trusted partners. Delivery partner fees are charged to the client and shown in the checkout details.
+        </p>
+      </section>
       <div className="border-t border-white/10 py-4 text-center text-xs text-muted">© {new Date().getFullYear()} Habibi Imports. All rights reserved.</div>
     </footer>
   );
