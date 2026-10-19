@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FiArrowLeft, FiHeart } from 'react-icons/fi';
+import { FiArrowLeft } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import { Link, useParams } from 'react-router-dom';
 import { getProduct } from '../api/products.js';
@@ -13,6 +13,7 @@ import { useCart } from '../context/CartContext.jsx';
 import { useCountry } from '../context/CountryContext.jsx';
 import { formatCurrency, getProductPrice } from '../utils/formatCurrency.js';
 import { mockProducts } from '../data/products.js';
+import WishlistButton from '../components/catalog/WishlistButton.jsx';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -69,7 +70,7 @@ export default function ProductDetail() {
           </div>
           <div className="mt-8 flex gap-3">
             <Button className="flex-1" disabled={product.stock < 1} onClick={addToCart}>Add to bag</Button>
-            <Button aria-label="Add to wishlist" className="w-12 px-0" variant="ghost"><FiHeart /></Button>
+            <WishlistButton className="h-12 w-12" product={product} />
           </div>
           <div className="mt-6"><DeliveryEstimate /></div>
         </div>

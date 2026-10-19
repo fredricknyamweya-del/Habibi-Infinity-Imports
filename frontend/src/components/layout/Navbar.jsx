@@ -8,6 +8,7 @@ import MegaMenu from './MegaMenu.jsx';
 import SearchBar from './SearchBar.jsx';
 import CartDrawer from './CartDrawer.jsx';
 import { useCart } from '../../context/CartContext.jsx';
+import { FiHeart } from 'react-icons/fi';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,6 +41,7 @@ export default function Navbar() {
         <SearchBar className="hidden w-56 lg:block" />
         <div className="hidden md:block"><CountrySwitcher /></div>
         <div className="flex items-center gap-3">
+          <Link aria-label="Wishlist" className="hidden p-2 text-lg text-ivory hover:text-gold sm:inline-flex" to="/wishlist"><FiHeart /></Link>
           <button aria-label={`Shopping cart, ${itemCount} items`} className="relative p-2 text-xl text-ivory hover:text-gold" onClick={() => setCartOpen(true)} type="button">
             <FiShoppingBag aria-hidden="true" />
             {itemCount > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[10px] font-bold text-obsidian">{itemCount}</span>}
