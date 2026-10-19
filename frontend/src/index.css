@@ -7,12 +7,12 @@
 
 @layer base {
   * {
-    @apply border-charcoal;
+    @apply border-line;
   }
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
@@ -39,7 +39,7 @@
 
 @layer components {
   .surface {
-    @apply rounded-card border border-white/10 bg-charcoal;
+      @apply rounded-card border border-line bg-charcoal;
   }
 
   .gold-outline {
