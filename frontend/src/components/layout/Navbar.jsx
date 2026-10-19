@@ -6,10 +6,14 @@ import Button from '../ui/Button.jsx';
 import CountrySwitcher from './CountrySwitcher.jsx';
 import MegaMenu from './MegaMenu.jsx';
 import SearchBar from './SearchBar.jsx';
+import CartDrawer from './CartDrawer.jsx';
+import { useCart } from '../../context/CartContext.jsx';
 
-export default function Navbar({ cartCount = 0 }) {
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('');
+  const [cartOpen, setCartOpen] = useState(false);
+  const { itemCount } = useCart();
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-obsidian/95 backdrop-blur">
@@ -36,10 +40,10 @@ export default function Navbar({ cartCount = 0 }) {
         <SearchBar className="hidden w-56 lg:block" />
         <div className="hidden md:block"><CountrySwitcher /></div>
         <div className="flex items-center gap-3">
-          <Link aria-label={`Shopping cart, ${cartCount} items`} className="relative p-2 text-xl text-ivory hover:text-gold" to="/cart">
+          <button aria-label={`Shopping cart, ${itemCount} items`} className="relative p-2 text-xl text-ivory hover:text-gold" onClick={() => setCartOpen(true)} type="button">
             <FiShoppingBag aria-hidden="true" />
-            {cartCount > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[10px] font-bold text-obsidian">{cartCount}</span>}
-          </Link>
+            {itemCount > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[10px] font-bold text-obsidian">{itemCount}</span>}
+          </button>
           <Button className="hidden min-h-10 px-4 md:inline-flex" to="/shop">Shop now</Button>
         </div>
       </div>
@@ -67,6 +71,7 @@ export default function Navbar({ cartCount = 0 }) {
           <Button className="mt-6 w-full" onClick={() => setMenuOpen(false)} to="/shop">Shop now</Button>
         </div>
       )}
+      <CartDrawer onClose={() => setCartOpen(false)} open={cartOpen} />
     </header>
   );
 }
