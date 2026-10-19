@@ -4,7 +4,7 @@ const tanzaniaPhone = '+255 749 057 058';
 export const site = {
   name: 'Habibi Infinity Imports',
   locations: [
-    { city: 'Mombasa/Nairobi Contact', country: 'Kenya', code: 'KE' },
+    { city: 'Mombasa/Nairobi', country: 'Kenya', code: 'KE' },
     { city: 'Dar es Salaam', country: 'Tanzania', code: 'TZ' },
   ],
   pickupPoints: [
