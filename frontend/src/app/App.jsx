@@ -14,7 +14,7 @@ const NotFound = lazy(() => import('../pages/NotFound.jsx'));
 
 export default function App() {
   return (
-    <Suspense fallback={<div aria-live="polite" className="grid min-h-[55vh] place-items-center text-sm text-muted">Loading Habibi Imports…</div>}>
+    <Suspense fallback={<div aria-live="polite" className="grid min-h-[55vh] place-items-center text-sm text-muted">Loading Habibi Infinity Imports…</div>}>
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />

@@ -1,4 +1,4 @@
-# Habibi Imports: Storefront
+# Habibi Infinity Imports: Storefront
 
 Luxury import and resale e-commerce storefront for East Africa, serving customers in **Kenya (KES)** and **Tanzania (TZS)**. Offices: Dar es Salaam and Nairobi.
 

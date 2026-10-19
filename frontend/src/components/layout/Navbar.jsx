@@ -45,7 +45,7 @@ export default function Navbar() {
       <div className="page-shell flex h-16 items-center justify-between gap-2 md:h-[76px] md:gap-5">
         <Link aria-label={`${site.name} home`} className="shrink-0" to="/">
           <span className="block font-heading text-xl tracking-wide text-gold">HABIBI</span>
-          <span className="block text-[9px] uppercase tracking-[0.34em] text-muted">Imports</span>
+          <span className="block text-[9px] uppercase tracking-[0.18em] text-muted">Infinity Imports</span>
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
           <div className="relative" ref={discoverRef}>

@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="mt-20 border-t border-white/10 bg-charcoal/50" id="site-footer">
       <div className="page-shell grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Link aria-label="Habibi Imports home" className="font-heading text-2xl text-gold" to="/">Habibi Imports</Link>
+          <Link aria-label="Habibi Infinity Imports home" className="font-heading text-2xl text-gold" to="/">Habibi Infinity Imports</Link>
           <p className="mt-3 max-w-xs text-sm leading-6 text-muted">Thoughtfully sourced finds, delivered with care across East Africa.</p>
           <div className="mt-5 flex gap-4 text-lg text-gold">
             <a aria-label="Instagram" href={site.socials.instagram} rel="noreferrer" target="_blank"><FiInstagram /></a>
@@ -40,7 +40,7 @@ export default function Footer() {
           Outside these shop locations, deliveries across the region are handled by trusted agents such as G4S, Wells Fargo, Easy Coach, and other trusted partners. Delivery partner fees are charged to the client and shown in the checkout details.
         </p>
       </section>
-      <div className="border-t border-white/10 py-4 text-center text-xs text-muted">© {new Date().getFullYear()} Habibi Imports. All rights reserved.</div>
+      <div className="border-t border-white/10 py-4 text-center text-xs text-muted">© {new Date().getFullYear()} Habibi Infinity Imports. All rights reserved.</div>
     </footer>
   );
 }

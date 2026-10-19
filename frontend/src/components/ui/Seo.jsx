@@ -17,7 +17,7 @@ export default function Seo() {
       description.name = 'description';
       document.head.appendChild(description);
     }
-    description.content = 'Discover thoughtfully sourced fashion, beauty, accessories and technology, delivered across Kenya and Tanzania by Habibi Imports.';
+    description.content = 'Discover thoughtfully sourced fashion, beauty, accessories and technology, delivered across Kenya and Tanzania by Habibi Infinity Imports.';
   }, [pathname]);
   return null;
 }

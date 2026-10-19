@@ -2,7 +2,7 @@ const kenyaPhone = '+254 117 037 848';
 const tanzaniaPhone = '+255 749 057 058';
 
 export const site = {
-  name: 'Habibi Imports',
+  name: 'Habibi Infinity Imports',
   locations: [
     { city: 'Nairobi', country: 'Kenya', code: 'KE' },
     { city: 'Dar es Salaam', country: 'Tanzania', code: 'TZ' },

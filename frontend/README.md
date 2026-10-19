@@ -1,4 +1,4 @@
-# Habibi Imports frontend
+# Habibi Infinity Imports frontend
 
 The storefront is a responsive React 18 and Vite 5 application for browsing imported goods and completing a mock-backed cart and checkout flow across Kenya and Tanzania.
 
