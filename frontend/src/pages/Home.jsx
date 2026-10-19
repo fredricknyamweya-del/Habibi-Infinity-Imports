@@ -10,6 +10,7 @@ import Container from '../components/ui/Container.jsx';
 import SectionTitle from '../components/ui/SectionTitle.jsx';
 import Skeleton from '../components/ui/Skeleton.jsx';
 import { useCountry } from '../context/CountryContext.jsx';
+import AdSlot from '../components/ads/AdSlot.jsx';
 
 function ProductSection({ title, eyebrow, items, loading, action }) {
   return (
@@ -42,6 +43,7 @@ export default function Home() {
     <Container className="pt-6 md:pt-10">
       <HeroShowcase />
       <TrustStrip />
+      <AdSlot className="my-6" placement="leaderboard" />
       <section className="py-10">
         <SectionTitle action={<Link className="text-sm text-gold hover:text-gold-soft" to="/shop">All categories ↗</Link>} eyebrow="The Habibi edit" title="Shop by category" />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -57,6 +59,7 @@ export default function Home() {
       </section>
       <ProductSection eyebrow="Just landed" items={products.filter((product) => product.isNew).slice(0, 4)} loading={loading} title="New arrivals" />
       <ProductSection eyebrow="Limited-time finds" items={products.filter((product) => product.isDeal).slice(0, 4)} loading={loading} title="Featured deals" />
+      <AdSlot className="my-8" placement="leaderboard" />
     </Container>
   );
 }

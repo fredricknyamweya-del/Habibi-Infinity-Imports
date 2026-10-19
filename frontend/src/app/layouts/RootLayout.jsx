@@ -3,6 +3,7 @@ import AnnouncementBar from '../../components/layout/AnnouncementBar.jsx';
 import FloatingWhatsApp from '../../components/layout/FloatingWhatsApp.jsx';
 import Footer from '../../components/layout/Footer.jsx';
 import Navbar from '../../components/layout/Navbar.jsx';
+import PromoPopup from '../../components/ads/PromoPopup.jsx';
 
 export default function RootLayout() {
   return (
@@ -12,6 +13,7 @@ export default function RootLayout() {
       <main className="min-h-[55vh]"><Outlet /></main>
       <Footer />
       <FloatingWhatsApp />
+      <PromoPopup />
     </>
   );
 }

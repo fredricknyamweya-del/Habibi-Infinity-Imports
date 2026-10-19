@@ -11,6 +11,7 @@ import Input from '../components/ui/Input.jsx';
 import SectionTitle from '../components/ui/SectionTitle.jsx';
 import { categories } from '../config/site.js';
 import { useCountry } from '../context/CountryContext.jsx';
+import AdSlot from '../components/ads/AdSlot.jsx';
 
 export default function Catalogue() {
   const { slug } = useParams();
@@ -60,6 +61,7 @@ export default function Catalogue() {
           </div>
           <p aria-live="polite" className="mb-5 text-xs text-muted">{loading ? 'Finding your pieces…' : `${total} ${total === 1 ? 'piece' : 'pieces'} to discover`}</p>
           <ProductGrid loading={loading} products={products} />
+          {!loading && products.length > 4 && <AdSlot className="my-8" placement="in-grid" />}
           <Pagination onChange={(page) => changeFilter('page', String(page))} page={Math.max(1, Number(params.page) || 1)} pages={pages} />
         </section>
       </div>

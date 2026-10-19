@@ -1,0 +1,26 @@
+export const mockAds = [
+  {
+    id: 'habibi-edit',
+    placement: 'leaderboard',
+    title: 'The Habibi edit',
+    description: 'A considered collection of beautiful things.',
+    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=85',
+    href: '/shop',
+  },
+  {
+    id: 'travel-style',
+    placement: 'in-grid',
+    title: 'Travel, beautifully.',
+    description: 'Meet the bags ready for your next story.',
+    image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85',
+    href: '/category/bags-handbags',
+  },
+  {
+    id: 'beauty-finds',
+    placement: 'sidebar',
+    title: 'Your new ritual',
+    description: 'Discover fragrance and skincare favourites.',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=85',
+    href: '/category/beauty-fragrance',
+  },
+];
