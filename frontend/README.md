@@ -4,6 +4,8 @@ The storefront is a responsive React 18 and Vite 5 application for browsing impo
 
 It uses React Router 6, Tailwind CSS v3, Bootstrap 5/react-bootstrap, Axios, Framer Motion, Swiper, React Icons, and react-hot-toast.
 
+The storefront defaults to light mode. Visitors can switch between light and dark with the theme button in the navigation; their selection is saved in local storage.
+
 ## Setup
 
 From this directory, install the dependencies and start the development server:
