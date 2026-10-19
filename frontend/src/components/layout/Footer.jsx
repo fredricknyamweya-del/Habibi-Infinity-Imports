@@ -37,7 +37,7 @@ export default function Footer() {
           ))}
         </ul>
         <p className="mt-4 max-w-4xl text-sm leading-6 text-muted">
-          Outside these shop locations, deliveries across the region are handled by trusted agents such as G4S, Wells Fargo, Easy Coach, and other trusted partners. Delivery partner fees are charged to the client and shown in the checkout details.
+          Outside these shop locations, deliveries across the region are handled by Trusted partners such as G4S, Wells Fargo, Easy Coach and other trusted shipping stakeholders of clients choice. Delivery fees are charged to the client and shown in the checkout details.
         </p>
       </section>
       <div className="border-t border-white/10 py-4 text-center text-xs text-muted">© {new Date().getFullYear()} Habibi Infinity Imports. All rights reserved.</div>
