@@ -47,6 +47,31 @@
   }
 }
 
+.category-marquee-animated {
+  animation: category-marquee 42s linear infinite;
+}
+
+.category-marquee:hover .category-marquee-animated,
+.category-marquee:focus-within .category-marquee-animated {
+  animation-play-state: paused;
+}
+
+@keyframes category-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-marquee-animated {
+    animation: none;
+  }
+}
+
 html[data-theme='light'] .border-white\/10,
 html[data-theme='light'] .border-white\/15,
 html[data-theme='light'] .border-white\/20,

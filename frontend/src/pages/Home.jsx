@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../api/products.js';
 import { categories } from '../config/site.js';
@@ -29,6 +30,7 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { country } = useCountry();
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     let active = true;
@@ -46,8 +48,16 @@ export default function Home() {
       <AdSlot className="my-6" placement="leaderboard" />
       <section className="py-10">
         <SectionTitle action={<Link className="text-sm text-gold hover:text-gold-soft" to="/shop">All categories ↗</Link>} eyebrow="The Habibi edit" title="Shop by category" />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {categories.map((category, index) => <CategoryCard category={category} index={index} key={category.slug} />)}
+        <div aria-label="Shop by category" className="category-marquee overflow-hidden">
+          <div className={`category-marquee-track flex w-max ${reducedMotion ? '' : 'category-marquee-animated'}`}>
+            {[0, ...(reducedMotion ? [] : [1])].map((copy) => (
+              <div aria-hidden={copy === 1 ? 'true' : undefined} className="flex shrink-0 gap-3 pr-3" key={copy}>
+                {categories.map((category, index) => (
+                  <CategoryCard category={category} index={index} key={category.slug} />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       <ProductSection action={<Link className="text-sm text-gold" to="/shop">Shop popular ↗</Link>} eyebrow="Loved by our community" items={products.slice(0, 8)} loading={loading} title="Popular right now" />
