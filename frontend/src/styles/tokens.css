@@ -1,0 +1,11 @@
+:root {
+  font-family: 'Inter', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --color-obsidian: #0b0b0d;
+  --color-charcoal: #16161a;
+  --color-gold: #d4b978;
+  --color-gold-soft: #f1e3bc;
+  --color-ivory: #f7f3ea;
+  --color-muted: #a0a0a6;
+}

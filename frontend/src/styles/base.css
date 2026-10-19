@@ -1,0 +1,25 @@
+#root {
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+}
+
+.page-shell {
+  width: min(100% - 2rem, 1320px);
+  margin-inline: auto;
+}
+
+.gold-text {
+  color: var(--color-gold);
+}
+
+.muted-text {
+  color: var(--color-muted);
+}
