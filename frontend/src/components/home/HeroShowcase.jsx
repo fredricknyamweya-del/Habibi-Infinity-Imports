@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Autoplay, A11y, EffectFade } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -75,9 +76,11 @@ export default function HeroShowcase() {
                 className="absolute bottom-10 right-10 hidden w-52 rounded-card border border-gold/30 bg-charcoal/80 p-3 shadow-glow backdrop-blur sm:block lg:right-20"
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <img alt="A curated fashion look" className="h-48 w-full rounded-lg object-cover" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=500&q=85" />
-                <p className="mt-3 text-xs uppercase tracking-widest text-gold">Curated for you</p>
-                <p className="mt-1 font-heading text-lg">The edit</p>
+                <Link aria-label="Explore the Habibi edit" className="block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold" to="/shop?sort=newest">
+                  <img alt="A curated fashion look" className="h-48 w-full rounded-lg object-cover" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=500&q=85" />
+                  <p className="mt-3 text-xs uppercase tracking-widest text-gold">Curated for you</p>
+                  <p className="mt-1 font-heading text-lg">The edit <span aria-hidden="true">↗</span></p>
+                </Link>
               </motion.div>
             </div>
           </SwiperSlide>
