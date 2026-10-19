@@ -1,13 +1,25 @@
 import { FiArrowUpRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { useCountry } from '../../context/CountryContext.jsx';
+import { useCart } from '../../context/CartContext.jsx';
 import { formatCurrency, getProductPrice } from '../../utils/formatCurrency.js';
 import Badge from '../ui/Badge.jsx';
+import Button from '../ui/Button.jsx';
 import WishlistButton from './WishlistButton.jsx';
 
 export default function ProductCard({ product }) {
   const { country } = useCountry();
+  const { addItem } = useCart();
   const badge = product.badges?.[0] || (product.isNew ? 'New' : null);
+  const variants = product.variants || [];
+
+  const handleAddToCart = () => {
+    const variant = variants[0] || '';
+    addItem(product, 1, variant);
+    toast.success(`${product.name} added to your cart`);
+  };
+
   return (
     <article className="group relative min-w-0">
       <Link className="relative block overflow-hidden rounded-card border border-white/10 bg-charcoal" to={`/product/${product.id}`}>
@@ -23,6 +35,14 @@ export default function ProductCard({ product }) {
           <span className="text-sm font-semibold text-gold">{formatCurrency(getProductPrice(product, country), country)}</span>
           <span aria-label={`${product.rating} out of 5 stars`} className="text-xs text-muted">★ {product.rating}</span>
         </div>
+        <Button
+          aria-label={`Add ${product.name} to cart`}
+          className="mt-3 w-full"
+          disabled={product.stock < 1}
+          onClick={handleAddToCart}
+        >
+          {product.stock < 1 ? 'Out of stock' : 'Add to cart'}
+        </Button>
       </div>
     </article>
   );

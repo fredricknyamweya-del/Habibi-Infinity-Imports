@@ -41,7 +41,7 @@ export default function ProductDetail() {
       return;
     }
     addItem(product, quantity, variant);
-    toast.success(`${product.name} added to your bag`);
+    toast.success(`${product.name} added to your cart`);
   };
 
   return (
@@ -69,7 +69,7 @@ export default function ProductDetail() {
             </div>
           </div>
           <div className="mt-8 flex gap-3">
-            <Button className="flex-1" disabled={product.stock < 1} onClick={addToCart}>Add to bag</Button>
+            <Button className="flex-1" disabled={product.stock < 1} onClick={addToCart}>Add to cart</Button>
             <WishlistButton className="h-12 w-12" product={product} />
           </div>
           <div className="mt-6"><DeliveryEstimate /></div>
