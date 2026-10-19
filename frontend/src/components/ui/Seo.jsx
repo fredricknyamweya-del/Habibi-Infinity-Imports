@@ -5,7 +5,7 @@ import { site } from '../../config/site.js';
 export default function Seo() {
   const { pathname } = useLocation();
   useEffect(() => {
-    const section = pathname === '/' ? 'Imported Luxury, Delivered Across East Africa'
+    const section = pathname === '/' ? 'Imported Quality, Delivered Across East Africa'
       : pathname.startsWith('/category/') ? 'Shop the Collection'
         : pathname.startsWith('/product/') ? 'Discover a Curated Find'
           : pathname.startsWith('/order/success/') ? 'Order Confirmation'
@@ -17,7 +17,7 @@ export default function Seo() {
       description.name = 'description';
       document.head.appendChild(description);
     }
-    description.content = 'Discover thoughtfully sourced fashion, beauty, accessories and technology, delivered across Kenya and Tanzania by Habibi Infinity Imports.';
+    description.content = 'Discover quality fashion, beauty, accessories and technology, delivered across Kenya and Tanzania by Habibi Infinity Imports.';
   }, [pathname]);
   return null;
 }

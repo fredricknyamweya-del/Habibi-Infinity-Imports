@@ -81,7 +81,7 @@ export default function HeroShowcase() {
                   initial={reducedMotion ? undefined : { opacity: 0, y: 22 }}
                   transition={{ duration: 0.75, delay: 0.12 }}
                 >
-                  {isSwahili ? <>Bidhaa za Kifahari. <span className="text-gold">Zinaletwa</span> Afrika Mashariki.</> : <>Imported Luxury. <span className="text-gold">Delivered</span> Across East Africa.</>}
+                  {isSwahili ? <>Bidhaa Bora. <span className="text-gold">Zinaletwa</span> Afrika Mashariki.</> : <>Imported Quality. <span className="text-gold">Delivered</span> Across East Africa.</>}
                 </motion.h1>
                 <p className="mt-6 max-w-lg text-base leading-7 text-white md:text-lg">{isSwahili ? ['Gundua bidhaa zilizochaguliwa kwa maisha yako.', 'Pata kipenzi chako kipya, kilicholetwa kutoka duniani kote.', 'Anasa kidogo, ikiletwa hadi mlangoni kwako.'][active] : slide.subtitle}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
