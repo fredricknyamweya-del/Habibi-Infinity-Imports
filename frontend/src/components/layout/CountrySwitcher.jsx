@@ -1,12 +1,7 @@
-import { useState } from 'react';
+import { useCountry } from '../../context/CountryContext.jsx';
 
 export default function CountrySwitcher({ className = '' }) {
-  const [country, setCountry] = useState(() => localStorage.getItem('habibi-country') || 'KE');
-  const changeCountry = (event) => {
-    setCountry(event.target.value);
-    localStorage.setItem('habibi-country', event.target.value);
-    window.dispatchEvent(new Event('habibi-country-change'));
-  };
+  const { country, setCountry } = useCountry();
 
   return (
     <label className={`sr-only ${className}`} htmlFor="country-switcher">
@@ -15,7 +10,7 @@ export default function CountrySwitcher({ className = '' }) {
         id="country-switcher"
         aria-label="Delivery country"
         className="rounded-full border border-white/15 bg-charcoal px-3 py-2 text-xs text-ivory"
-        onChange={changeCountry}
+        onChange={(event) => setCountry(event.target.value)}
         value={country}
       >
         <option value="KE">KE · KES</option>
