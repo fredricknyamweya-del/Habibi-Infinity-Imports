@@ -12,6 +12,7 @@ import SectionTitle from '../components/ui/SectionTitle.jsx';
 import { categories } from '../config/site.js';
 import { useCountry } from '../context/CountryContext.jsx';
 import AdSlot from '../components/ads/AdSlot.jsx';
+import { localizedCopy } from '../utils/localization.js';
 
 export default function Catalogue() {
   const { slug } = useParams();
@@ -24,7 +25,10 @@ export default function Catalogue() {
   const { country } = useCountry();
   const category = categories.find((item) => item.slug === slug);
   const params = useMemo(() => Object.fromEntries(searchParams.entries()), [searchParams]);
-  const heading = category?.name || 'Shop all';
+  const heading = category?.name || localizedCopy(country, 'Shop all', 'Nunua bidhaa zote');
+  const description = category
+    ? localizedCopy(country, `${category.subcategories.join(' · ')} — curated pieces chosen with care.`, `${category.subcategories.join(' · ')} — bidhaa zilizochaguliwa kwa uangalifu.`)
+    : localizedCopy(country, 'A considered collection of finds sourced from around the world.', 'Mkusanyiko wa bidhaa zilizochaguliwa kutoka sehemu mbalimbali duniani.');
 
   useEffect(() => {
     let active = true;
@@ -50,7 +54,7 @@ export default function Catalogue() {
 
   return (
     <Container className="py-10">
-      <SectionTitle description={category ? `${category.subcategories.join(' · ')} — curated pieces chosen with care.` : 'A considered collection of finds sourced from around the world.'} eyebrow="Discover the collection" title={heading} />
+      <SectionTitle description={description} eyebrow={localizedCopy(country, 'Discover the collection', 'Gundua mkusanyiko')} title={heading} />
       <div className="grid gap-7 lg:grid-cols-[240px_1fr]">
         <div>
           <FilterSidebar onChange={changeFilter} onClear={clearFilters} onClose={() => setFiltersOpen(false)} open={filtersOpen} params={{ ...params, category: slug }} />
@@ -58,11 +62,11 @@ export default function Catalogue() {
         </div>
         <section>
           <div className="mb-5 grid gap-3 sm:grid-cols-[1fr_auto_auto] sm:items-center">
-            <Input aria-label="Search catalogue" id="catalog-search" onChange={(event) => changeFilter('q', event.target.value)} placeholder="Search products..." value={params.q || ''} />
-            <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/15 px-4 text-sm lg:hidden" onClick={() => setFiltersOpen(true)} type="button"><FiSliders /> Filters</button>
+            <Input aria-label={localizedCopy(country, 'Search catalogue', 'Tafuta kwenye katalogi')} id="catalog-search" onChange={(event) => changeFilter('q', event.target.value)} placeholder={localizedCopy(country, 'Search products...', 'Tafuta bidhaa...')} value={params.q || ''} />
+            <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/15 px-4 text-sm lg:hidden" onClick={() => setFiltersOpen(true)} type="button"><FiSliders /> {localizedCopy(country, 'Filters', 'Vichujio')}</button>
             <SortDropdown onChange={(value) => changeFilter('sort', value === 'featured' ? '' : value)} value={params.sort || 'featured'} />
           </div>
-          <p aria-live="polite" className="mb-5 text-xs text-muted">{loading ? 'Finding your pieces…' : `${total} ${total === 1 ? 'piece' : 'pieces'} to discover`}</p>
+          <p aria-live="polite" className="mb-5 text-xs text-muted">{loading ? localizedCopy(country, 'Finding your pieces…', 'Tunatafuta bidhaa zako…') : `${total} ${localizedCopy(country, total === 1 ? 'piece to discover' : 'pieces to discover', total === 1 ? 'bidhaa ya kugundua' : 'bidhaa za kugundua')}`}</p>
           <ProductGrid loading={loading} products={products} />
           {!loading && products.length > 4 && <AdSlot className="my-8" placement="in-grid" />}
           <Pagination onChange={(page) => changeFilter('page', String(page))} page={Math.max(1, Number(params.page) || 1)} pages={pages} />

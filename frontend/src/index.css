@@ -90,3 +90,7 @@ html[data-theme='light'] .bg-obsidian\/80 {
 html[data-theme='dark'] .text-muted {
   color: rgb(var(--color-muted)) !important;
 }
+
+html[data-theme='light'] .text-muted {
+  font-weight: 500;
+}

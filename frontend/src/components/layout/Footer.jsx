@@ -41,7 +41,7 @@ export default function Footer() {
             </li>
           ))}
         </ul>
-        <p className="mt-4 max-w-4xl text-sm leading-6 text-muted">
+        <p className="mx-auto mt-4 max-w-4xl text-center text-sm leading-6 text-muted">
           {localizedCopy(country, 'Outside these shop locations, deliveries across the region are handled by Trusted partners such as G4S, Wells Fargo, Easy Coach and other trusted shipping stakeholders of clients choice. Delivery fees are charged to the client and shown in the checkout details.', 'Nje ya maeneo haya ya maduka, bidhaa husafirishwa kote katika ukanda huu kupitia washirika wanaoaminika kama G4S, Wells Fargo, Easy Coach na wadau wengine wa usafirishaji wanaochaguliwa na mteja. Gharama za usafirishaji hulipwa na mteja na huonyeshwa kwenye maelezo ya malipo wakati wa kukamilisha oda.')}
         </p>
       </section>
