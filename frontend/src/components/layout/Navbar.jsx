@@ -23,10 +23,28 @@ export default function Navbar() {
     setCartOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', closeOnEscape);
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  const toggleMenu = () => {
+    setActiveCategory('');
+    setMenuOpen((open) => !open);
+  };
+
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-obsidian/95 backdrop-blur">
       <div className="page-shell flex h-[76px] items-center justify-between gap-5">
-        <button aria-label={menuOpen ? 'Close menu' : 'Open menu'} className="text-2xl text-ivory md:hidden" onClick={() => setMenuOpen(!menuOpen)} type="button">
+        <button aria-controls="mobile-navigation" aria-expanded={menuOpen} aria-label={menuOpen ? 'Close menu' : 'Open menu'} className="text-2xl text-ivory md:hidden" onClick={toggleMenu} type="button">
           {menuOpen ? <FiX /> : <FiMenu />}
         </button>
         <Link aria-label={`${site.name} home`} className="shrink-0" to="/">
@@ -48,9 +66,10 @@ export default function Navbar() {
         <SearchBar className="hidden w-56 lg:block" />
         <div className="hidden md:block"><CountrySwitcher /></div>
         <div className="flex items-center gap-3">
+          <CountrySwitcher className="md:hidden" compact />
           <ThemeToggle />
           <Link aria-label="Wishlist" className="hidden p-2 text-lg text-ivory hover:text-gold sm:inline-flex" to="/wishlist"><FiHeart /></Link>
-          <button aria-label={`Shopping cart, ${itemCount} items`} className="relative p-2 text-xl text-ivory hover:text-gold" onClick={() => setCartOpen(true)} type="button">
+          <button aria-label={`Shopping cart, ${itemCount} items`} className="relative p-2 text-xl text-ivory hover:text-gold" onClick={() => { setMenuOpen(false); setCartOpen(true); }} type="button">
             <FiShoppingBag aria-hidden="true" />
             {itemCount > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[10px] font-bold text-obsidian">{itemCount}</span>}
           </button>
@@ -58,9 +77,16 @@ export default function Navbar() {
         </div>
       </div>
       {menuOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[76px] z-50 overflow-y-auto border-t border-white/10 bg-obsidian px-5 pb-8 pt-5 md:hidden">
+        <nav aria-label="Mobile navigation" className="fixed inset-x-0 bottom-0 top-[76px] z-50 overflow-y-auto border-t border-white/10 bg-obsidian px-5 pb-8 pt-5 md:hidden" id="mobile-navigation">
           <SearchBar className="mb-5" />
-          <div className="mb-5"><CountrySwitcher /></div>
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
+            <Link className="text-sm text-ivory hover:text-gold" onClick={() => setMenuOpen(false)} to="/wishlist"><FiHeart className="mr-2 inline" />Wishlist</Link>
+            <ThemeToggle />
+          </div>
+          <div className="mb-4 flex gap-5 border-b border-white/10 pb-4 text-sm">
+            <Link className="text-ivory hover:text-gold" onClick={() => setMenuOpen(false)} to="/shop">Shop all</Link>
+            <Link className="text-ivory hover:text-gold" onClick={() => setMenuOpen(false)} to="/shop?sort=newest">New arrivals</Link>
+          </div>
           {categories.map((category) => {
             const isOpen = activeCategory === category.slug;
             return (
@@ -74,12 +100,15 @@ export default function Navbar() {
                   <span><span className="mr-3 text-sm font-semibold text-gold">{category.number}</span><span className="font-heading text-lg">{category.name}</span></span>
                   <FiChevronDown className={`text-muted transition ${isOpen ? 'rotate-180' : ''}`} />
                 </button>
-                {isOpen && <div className="flex flex-wrap gap-x-2 pb-4 pl-9 text-sm text-muted">{category.subcategories.map((item, index) => <span key={item}><Link onClick={() => setMenuOpen(false)} to={`/category/${category.slug}?subcategory=${encodeURIComponent(item)}`}>{item}</Link>{index < category.subcategories.length - 1 && <span className="ml-2 text-gold/60">·</span>}</span>)}</div>}
+                {isOpen && <div className="pb-4 pl-9 text-sm">
+                  <Link className="mb-2 inline-block font-semibold text-gold" onClick={() => setMenuOpen(false)} to={`/category/${category.slug}`}>Browse all {category.name}</Link>
+                  <div className="flex flex-wrap gap-x-2 text-muted">{category.subcategories.map((item, index) => <span key={item}><Link onClick={() => setMenuOpen(false)} to={`/category/${category.slug}?subcategory=${encodeURIComponent(item)}`}>{item}</Link>{index < category.subcategories.length - 1 && <span className="ml-2 text-gold/60">·</span>}</span>)}</div>
+                </div>}
               </div>
             );
           })}
           <Button className="mt-6 w-full" onClick={() => setMenuOpen(false)} to="/shop">Shop now</Button>
-        </div>
+        </nav>
       )}
       <CartDrawer onClose={() => setCartOpen(false)} open={cartOpen} />
     </header>

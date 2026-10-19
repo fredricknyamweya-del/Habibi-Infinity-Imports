@@ -1,17 +1,17 @@
 import { useId } from 'react';
 import { useCountry } from '../../context/CountryContext.jsx';
 
-export default function CountrySwitcher({ className = '' }) {
+export default function CountrySwitcher({ className = '', compact = false }) {
   const { country, setCountry } = useCountry();
   const id = useId();
 
   return (
-    <label className={`text-xs text-muted ${className}`} htmlFor={id}>
-      Delivery country
+    <label className={`inline-flex ${compact ? 'items-center' : 'flex-col items-start gap-1'} text-xs text-muted ${className}`} htmlFor={id}>
+      <span className={compact ? 'sr-only' : ''}>Delivery country</span>
       <select
         id={id}
-        aria-label="Delivery country"
-        className="rounded-full border border-white/15 bg-charcoal px-3 py-2 text-xs text-ivory"
+        aria-label={compact ? 'Delivery country and currency' : undefined}
+        className={`min-h-10 rounded-full border border-line bg-charcoal text-xs text-ivory focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40 ${compact ? 'max-w-[82px] px-2' : 'px-3'}`}
         onChange={(event) => setCountry(event.target.value)}
         value={country}
       >
