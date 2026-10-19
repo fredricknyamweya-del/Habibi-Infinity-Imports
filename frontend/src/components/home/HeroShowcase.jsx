@@ -44,6 +44,21 @@ export default function HeroShowcase() {
             <div className="absolute inset-0 -z-10 bg-gradient-to-r from-obsidian via-obsidian/80 to-obsidian/20" />
             <div className="page-shell flex min-h-[540px] items-center py-16 md:min-h-[570px]">
               <div className="max-w-2xl">
+                <motion.p
+                  animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                  className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-obsidian/70 px-4 py-2 text-sm font-semibold tracking-wide text-gold shadow-glow backdrop-blur"
+                  initial={reducedMotion ? undefined : { opacity: 0, y: 10 }}
+                  transition={{ duration: 0.55 }}
+                >
+                  <motion.span
+                    animate={reducedMotion ? undefined : { rotate: [0, 18, -8, 18, 0] }}
+                    aria-hidden="true"
+                    transition={reducedMotion ? undefined : { duration: 1.4, repeat: Infinity, repeatDelay: 2.5 }}
+                  >
+                    👋
+                  </motion.span>
+                  Karibu Customer!
+                </motion.p>
                 <p className="mb-5 text-xs font-semibold uppercase tracking-[0.3em] text-gold">A world of beautiful finds</p>
                 <motion.h1
                   animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
