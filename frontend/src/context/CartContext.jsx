@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { STORAGE_KEYS } from '../utils/constants.js';
 import { getProductPrice } from '../utils/formatCurrency.js';
 import { useCountry } from './CountryContext.jsx';
@@ -18,24 +18,27 @@ function loadCart() {
 export function CartProvider({ children }) {
   const [items, setItems] = useState(loadCart);
   const { country } = useCountry();
-  const persist = (nextItems) => {
-    setItems(nextItems);
-    localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(nextItems));
-  };
-  const addItem = (product, qty = 1, variant = '') => {
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(items));
+  }, [items]);
+  const addItem = useCallback((product, qty = 1, variant = '') => {
     const key = `${product.id}:${variant}`;
-    const existing = items.find((item) => item.key === key);
-    const nextItems = existing
-      ? items.map((item) => item.key === key ? { ...item, qty: item.qty + qty } : item)
-      : [...items, { key, product, qty, variant }];
-    persist(nextItems);
-  };
-  const removeItem = (key) => persist(items.filter((item) => item.key !== key));
-  const updateQuantity = (key, qty) => {
-    if (qty < 1) return removeItem(key);
-    persist(items.map((item) => item.key === key ? { ...item, qty: Math.min(qty, item.product.stock || 99) } : item));
-  };
-  const clearCart = () => persist([]);
+    setItems((current) => {
+      const existing = current.find((item) => item.key === key);
+      return existing
+        ? current.map((item) => item.key === key ? { ...item, qty: item.qty + qty } : item)
+        : [...current, { key, product, qty, variant }];
+    });
+  }, []);
+  const removeItem = useCallback((key) => {
+    setItems((current) => current.filter((item) => item.key !== key));
+  }, []);
+  const updateQuantity = useCallback((key, qty) => {
+    setItems((current) => qty < 1
+      ? current.filter((item) => item.key !== key)
+      : current.map((item) => item.key === key ? { ...item, qty: Math.min(qty, item.product.stock || 99) } : item));
+  }, []);
+  const clearCart = useCallback(() => setItems([]), []);
   const subtotal = items.reduce((sum, item) => sum + getProductPrice(item.product, country) * item.qty, 0);
   const value = useMemo(() => ({
     items,
@@ -45,7 +48,7 @@ export function CartProvider({ children }) {
     removeItem,
     updateQuantity,
     clearCart,
-  }), [items, subtotal]);
+  }), [addItem, clearCart, items, removeItem, subtotal, updateQuantity]);
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 

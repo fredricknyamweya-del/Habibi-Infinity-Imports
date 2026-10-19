@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { STORAGE_KEYS } from '../utils/constants.js';
 
 const WishlistContext = createContext(null);
@@ -15,12 +15,14 @@ function readWishlist() {
 
 export function WishlistProvider({ children }) {
   const [ids, setIds] = useState(readWishlist);
-  const toggleWishlist = (id) => {
-    const next = ids.includes(id) ? ids.filter((item) => item !== id) : [...ids, id];
-    localStorage.setItem(STORAGE_KEYS.wishlist, JSON.stringify(next));
-    setIds(next);
-  };
-  const value = useMemo(() => ({ ids, toggleWishlist, isWishlisted: (id) => ids.includes(id) }), [ids]);
+  const toggleWishlist = useCallback((id) => {
+    setIds((current) => {
+      const next = current.includes(id) ? current.filter((item) => item !== id) : [...current, id];
+      localStorage.setItem(STORAGE_KEYS.wishlist, JSON.stringify(next));
+      return next;
+    });
+  }, []);
+  const value = useMemo(() => ({ ids, toggleWishlist, isWishlisted: (id) => ids.includes(id) }), [ids, toggleWishlist]);
   return <WishlistContext.Provider value={value}>{children}</WishlistContext.Provider>;
 }
 

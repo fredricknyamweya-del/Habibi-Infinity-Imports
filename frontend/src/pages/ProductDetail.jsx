@@ -59,10 +59,10 @@ export default function ProductDetail() {
           <div className="mt-8 grid gap-6">
             <VariantPicker onChange={setVariant} value={variant} variants={product.variants} />
             <div className="flex items-center gap-4">
-              <label className="text-xs text-muted" htmlFor="product-quantity">Quantity</label>
+              <span aria-hidden="true" className="text-xs text-muted">Quantity</span>
               <div className="flex items-center rounded-full border border-white/15">
                 <button aria-label="Decrease quantity" className="h-10 w-10 text-lg" onClick={() => setQuantity(Math.max(1, quantity - 1))} type="button">−</button>
-                <span className="min-w-6 text-center text-sm" id="product-quantity">{quantity}</span>
+                <span aria-live="polite" aria-label={`Quantity ${quantity}`} className="min-w-6 text-center text-sm" role="status">{quantity}</span>
                 <button aria-label="Increase quantity" className="h-10 w-10 text-lg" onClick={() => setQuantity(Math.min(product.stock || 1, quantity + 1))} type="button">+</button>
               </div>
               <span className="text-xs text-muted">Max {product.stock}</span>

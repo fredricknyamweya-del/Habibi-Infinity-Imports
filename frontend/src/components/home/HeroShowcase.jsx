@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Autoplay, A11y, EffectFade } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import Button from '../ui/Button.jsx';
@@ -36,7 +35,7 @@ export default function HeroShowcase() {
         onSwiper={setSwiper}
         slidesPerView={1}
       >
-        {slides.map((slide, index) => (
+        {slides.map((slide) => (
           <SwiperSlide key={slide.title}>
             <div className="absolute inset-0 -z-20">
               <img alt="" className="h-full w-full object-cover opacity-45" src={slide.image} />
@@ -80,7 +79,6 @@ export default function HeroShowcase() {
                 <p className="mt-3 text-xs uppercase tracking-widest text-gold">Curated for you</p>
                 <p className="mt-1 font-heading text-lg">The edit</p>
               </motion.div>
-              <Link aria-label="Browse all products" className="absolute inset-0 -z-0" to="/shop" tabIndex={-1} />
             </div>
           </SwiperSlide>
         ))}
