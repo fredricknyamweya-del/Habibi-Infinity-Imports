@@ -6,6 +6,7 @@ import Container from '../components/ui/Container.jsx';
 import { useCountry } from '../context/CountryContext.jsx';
 import { formatCurrency, getProductPrice } from '../utils/formatCurrency.js';
 import { DELIVERY_OPTIONS } from '../utils/constants.js';
+import { localizedCopy } from '../utils/localization.js';
 
 export default function OrderConfirmation() {
   const { id } = useParams();
@@ -28,22 +29,22 @@ export default function OrderConfirmation() {
     <Container className="max-w-2xl py-14">
       <div className="rounded-card border border-gold/20 bg-charcoal p-6 text-center shadow-glow sm:p-10">
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-gold text-3xl text-obsidian"><FiCheck aria-hidden="true" /></span>
-        <p className="mt-6 text-xs uppercase tracking-[0.24em] text-gold">Thank you for choosing us</p>
-        <h1 className="mt-2 font-heading text-4xl">Your order is in.</h1>
-        <p className="mt-3 text-sm text-muted">{loading ? 'Loading order details…' : order ? 'We’re preparing your carefully chosen pieces.' : 'Your order was submitted. We could not retrieve its full details just now.'}</p>
+        <p className="mt-6 text-xs uppercase tracking-[0.24em] text-gold">{localizedCopy(country, 'Thank you for choosing us', 'Asante kwa kutuchagua')}</p>
+        <h1 className="mt-2 font-heading text-4xl">{localizedCopy(country, 'Your order is in.', 'Oda yako imepokelewa.')}</h1>
+        <p className="mt-3 text-sm text-muted">{loading ? localizedCopy(country, 'Loading order details…', 'Tunapakia maelezo ya oda…') : order ? localizedCopy(country, 'We’re preparing your carefully chosen pieces.', 'Tunatayarisha bidhaa ulizochagua kwa uangalifu.') : localizedCopy(country, 'Your order was submitted. We could not retrieve its full details just now.', 'Oda yako imetumwa, lakini hatukuweza kupata maelezo yake yote kwa sasa.')}</p>
         <div className="mt-7 rounded-lg border border-white/10 p-4">
           <p className="text-xs uppercase tracking-widest text-muted">Order number</p>
           <p className="mt-2 font-heading text-xl text-gold">{decodeURIComponent(id)}</p>
-          {order?.customer?.name && <p className="mt-2 text-sm text-muted">We’ll keep you updated, {order.customer.name}.</p>}
+          {order?.customer?.name && <p className="mt-2 text-sm text-muted">{localizedCopy(country, `We’ll keep you updated, ${order.customer.name}.`, `Tutakupa taarifa kuhusu oda yako, ${order.customer.name}.`)}</p>}
         </div>
         {order && <div className="mt-6 text-left">
-          <h2 className="font-heading text-xl">Order summary</h2>
+          <h2 className="font-heading text-xl">{localizedCopy(country, 'Order summary', 'Muhtasari wa oda')}</h2>
           <div className="mt-3 divide-y divide-white/10">{items.map((item, index) => <p className="flex justify-between gap-3 py-3 text-sm" key={item.key || item.product_id || index}><span>{item.qty} × {item.product?.name || item.name || item.product_id}</span><span className="text-gold">{formatCurrency(getProductPrice(item.product || item, orderCountry) * item.qty, orderCountry)}</span></p>)}</div>
-          <div className="mt-3 border-t border-white/10 pt-3 text-sm"><p className="flex justify-between text-muted"><span>Estimated total</span><span className="font-semibold text-gold">{formatCurrency(total, orderCountry)}</span></p></div>
+          <div className="mt-3 border-t border-white/10 pt-3 text-sm"><p className="flex justify-between text-muted"><span>{localizedCopy(country, 'Estimated total', 'Jumla inayokadiriwa')}</span><span className="font-semibold text-gold">{formatCurrency(total, orderCountry)}</span></p></div>
         </div>}
         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-          <Link className="rounded-full bg-gold px-5 py-3 text-sm font-semibold text-obsidian" to="/shop">Continue shopping</Link>
-          <Link className="rounded-full border border-gold/40 px-5 py-3 text-sm text-gold" to={`/track?id=${encodeURIComponent(id)}`}>Track your order</Link>
+          <Link className="rounded-full bg-gold px-5 py-3 text-sm font-semibold text-obsidian" to="/shop">{localizedCopy(country, 'Continue shopping', 'Endelea kununua')}</Link>
+          <Link className="rounded-full border border-gold/40 px-5 py-3 text-sm text-gold" to={`/track?id=${encodeURIComponent(id)}`}>{localizedCopy(country, 'Track your order', 'Fuatilia oda yako')}</Link>
         </div>
       </div>
     </Container>
