@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiChevronDown, FiMenu, FiShoppingBag, FiX } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { categories, site } from '../../config/site.js';
 import Button from '../ui/Button.jsx';
 import CountrySwitcher from './CountrySwitcher.jsx';
@@ -15,6 +15,12 @@ export default function Navbar() {
   const [activeCategory, setActiveCategory] = useState('');
   const [cartOpen, setCartOpen] = useState(false);
   const { itemCount } = useCart();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setMenuOpen(false);
+    setCartOpen(false);
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-obsidian/95 backdrop-blur">

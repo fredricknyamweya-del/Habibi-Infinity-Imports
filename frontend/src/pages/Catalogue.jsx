@@ -52,7 +52,10 @@ export default function Catalogue() {
     <Container className="py-10">
       <SectionTitle description={category ? `${category.subcategories.join(' · ')} — curated pieces chosen with care.` : 'A considered collection of finds sourced from around the world.'} eyebrow="Discover the collection" title={heading} />
       <div className="grid gap-7 lg:grid-cols-[240px_1fr]">
-        <FilterSidebar onChange={changeFilter} onClear={clearFilters} onClose={() => setFiltersOpen(false)} open={filtersOpen} params={{ ...params, category: slug }} />
+        <div>
+          <FilterSidebar onChange={changeFilter} onClear={clearFilters} onClose={() => setFiltersOpen(false)} open={filtersOpen} params={{ ...params, category: slug }} />
+          <AdSlot className="mt-6 hidden lg:block" placement="sidebar" />
+        </div>
         <section>
           <div className="mb-5 grid gap-3 sm:grid-cols-[1fr_auto_auto] sm:items-center">
             <Input aria-label="Search catalogue" id="catalog-search" onChange={(event) => changeFilter('q', event.target.value)} placeholder="Search products..." value={params.q || ''} />
