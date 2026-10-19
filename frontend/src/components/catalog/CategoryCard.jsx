@@ -1,10 +1,11 @@
 import { FiArrowUpRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-export default function CategoryCard({ category, index = 0 }) {
+export default function CategoryCard({ category, index = 0, tabIndex }) {
   return (
     <Link
       className="group relative isolate flex min-h-56 w-[min(76vw,260px)] shrink-0 overflow-hidden rounded-card border border-gold/20 bg-charcoal p-5 transition hover:border-gold hover:shadow-glow sm:w-[260px]"
+      tabIndex={tabIndex}
       to={`/category/${category.slug}`}
     >
       <img

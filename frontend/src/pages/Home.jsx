@@ -48,12 +48,12 @@ export default function Home() {
       <AdSlot className="my-6" placement="leaderboard" />
       <section className="py-10">
         <SectionTitle action={<Link className="text-sm text-gold hover:text-gold-soft" to="/shop">All categories ↗</Link>} eyebrow="The Habibi edit" title="Shop by category" />
-        <div aria-label="Shop by category" className="category-marquee overflow-hidden">
+        <div aria-label="Shop by category" className={`category-marquee ${reducedMotion ? 'overflow-x-auto' : 'overflow-hidden'}`}>
           <div className={`category-marquee-track flex w-max ${reducedMotion ? '' : 'category-marquee-animated'}`}>
             {[0, ...(reducedMotion ? [] : [1])].map((copy) => (
               <div aria-hidden={copy === 1 ? 'true' : undefined} className="flex shrink-0 gap-3 pr-3" key={copy}>
                 {categories.map((category, index) => (
-                  <CategoryCard category={category} index={index} key={category.slug} />
+                  <CategoryCard category={category} index={index} key={category.slug} tabIndex={copy === 1 ? -1 : undefined} />
                 ))}
               </div>
             ))}

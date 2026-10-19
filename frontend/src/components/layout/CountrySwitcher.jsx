@@ -7,10 +7,10 @@ export default function CountrySwitcher({ className = '', compact = false }) {
 
   return (
     <label className={`inline-flex ${compact ? 'items-center' : 'flex-col items-start gap-1'} text-xs text-muted ${className}`} htmlFor={id}>
-      <span className={compact ? 'sr-only' : ''}>Delivery country</span>
+      <span className={compact ? 'sr-only' : ''}>Select Country</span>
       <select
         id={id}
-        aria-label={compact ? 'Delivery country and currency' : undefined}
+        aria-label={compact ? 'Select country and currency' : undefined}
         className={`min-h-10 rounded-full border border-line bg-charcoal text-xs text-ivory focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40 ${compact ? 'max-w-[72px] px-1.5' : 'px-3'}`}
         onChange={(event) => setCountry(event.target.value)}
         value={country}
