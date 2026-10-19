@@ -73,7 +73,7 @@ export default function HeroShowcase() {
               </div>
               <motion.div
                 animate={reducedMotion ? undefined : { y: [0, -12, 0], rotate: [0, 1, 0] }}
-                className="absolute bottom-10 right-10 hidden w-52 rounded-card border border-gold/30 bg-charcoal/80 p-3 shadow-glow backdrop-blur sm:block lg:right-20"
+                className="absolute bottom-10 right-10 hidden w-52 rounded-card border border-gold/30 bg-charcoal/80 p-3 shadow-glow backdrop-blur xl:block xl:right-20"
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               >
                 <Link aria-label="Explore the Habibi edit" className="block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold" to="/shop?sort=newest">
