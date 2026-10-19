@@ -4,6 +4,7 @@ import Home from '../pages/Home.jsx';
 import Catalogue from '../pages/Catalogue.jsx';
 import ProductDetail from '../pages/ProductDetail.jsx';
 import Cart from '../pages/Cart.jsx';
+import Checkout from '../pages/Checkout.jsx';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="category/:slug" element={<Catalogue />} />
         <Route path="product/:id" element={<ProductDetail />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
   );
