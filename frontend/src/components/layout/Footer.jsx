@@ -1,6 +1,7 @@
 import { FiArrowUpRight, FiInstagram } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { site } from '../../config/site.js';
+import ContactCard from './ContactCard.jsx';
 
 export default function Footer() {
   return (
@@ -14,17 +15,7 @@ export default function Footer() {
             <a aria-label="Facebook" href={site.socials.facebook} rel="noreferrer" target="_blank"><FiArrowUpRight /></a>
           </div>
         </div>
-        {site.locations.map((location) => {
-          const contact = site.contacts[location.code];
-          return (
-            <section key={location.code}>
-              <h2 className="font-heading text-lg text-ivory">{location.city}</h2>
-              <p className="mt-1 text-xs uppercase tracking-widest text-muted">{location.country}</p>
-              <a className="mt-4 block text-sm text-ivory hover:text-gold" href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a>
-              <a className="mt-2 inline-flex items-center gap-2 text-sm text-gold" href={contact.whatsapp} rel="noreferrer" target="_blank">WhatsApp <FiArrowUpRight /></a>
-            </section>
-          );
-        })}
+        {site.locations.map((location) => <ContactCard key={location.code} location={location} />)}
         <section>
           <h2 className="font-heading text-lg text-ivory">Here to help</h2>
           <Link className="mt-4 block text-sm text-muted hover:text-gold" to={site.links.delivery}>Delivery information</Link>

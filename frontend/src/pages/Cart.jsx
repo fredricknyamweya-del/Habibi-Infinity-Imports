@@ -3,6 +3,7 @@ import CartLine from '../features/cart/CartLine.jsx';
 import CartSummary from '../features/cart/CartSummary.jsx';
 import Container from '../components/ui/Container.jsx';
 import { useCart } from '../context/CartContext.jsx';
+import { site } from '../config/site.js';
 
 export default function Cart() {
   const { items, clearCart } = useCart();
@@ -17,7 +18,7 @@ export default function Cart() {
       ) : (
         <div className="grid items-start gap-8 lg:grid-cols-[1fr_360px]">
           <div className="rounded-card border border-white/10 bg-charcoal px-5">{items.map((item) => <CartLine item={item} key={item.key} />)}</div>
-          <div className="lg:sticky lg:top-28"><CartSummary /><p className="mt-4 text-center text-xs text-muted">Need help? <a className="text-gold" href="https://wa.me/255749057058">Chat with us on WhatsApp</a></p></div>
+          <div className="lg:sticky lg:top-28"><CartSummary /><p className="mt-4 text-center text-xs text-muted">Need help? <a className="font-semibold text-gold underline underline-offset-4" href={site.contacts.KE.whatsapp} rel="noreferrer" target="_blank">Chat with us on WhatsApp</a></p></div>
         </div>
       )}
     </Container>

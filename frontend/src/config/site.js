@@ -1,4 +1,5 @@
-const kenyaPhone = '+25411037848';
+const kenyaPhone = '+254 117 037 848';
+const tanzaniaPhone = '+255 749 057 058';
 
 export const site = {
   name: 'Habibi Imports',
@@ -8,8 +9,8 @@ export const site = {
   ],
   contacts: {
     TZ: {
-      phone: '+255 749057058',
-      whatsapp: 'https://wa.me/255749057058',
+      phone: tanzaniaPhone,
+      whatsapp: `https://wa.me/${tanzaniaPhone.replace(/\D/g, '')}`,
     },
     KE: {
       // TODO: Verify the Kenya number length.

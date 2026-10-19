@@ -9,6 +9,7 @@ import SearchBar from './SearchBar.jsx';
 import CartDrawer from './CartDrawer.jsx';
 import { useCart } from '../../context/CartContext.jsx';
 import { FiHeart } from 'react-icons/fi';
+import ThemeToggle from './ThemeToggle.jsx';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -47,6 +48,7 @@ export default function Navbar() {
         <SearchBar className="hidden w-56 lg:block" />
         <div className="hidden md:block"><CountrySwitcher /></div>
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link aria-label="Wishlist" className="hidden p-2 text-lg text-ivory hover:text-gold sm:inline-flex" to="/wishlist"><FiHeart /></Link>
           <button aria-label={`Shopping cart, ${itemCount} items`} className="relative p-2 text-xl text-ivory hover:text-gold" onClick={() => setCartOpen(true)} type="button">
             <FiShoppingBag aria-hidden="true" />

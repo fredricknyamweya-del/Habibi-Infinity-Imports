@@ -46,3 +46,18 @@
     @apply border border-gold/30 transition duration-300 hover:border-gold hover:shadow-glow;
   }
 }
+
+html[data-theme='light'] .border-white\/10,
+html[data-theme='light'] .border-white\/15,
+html[data-theme='light'] .border-white\/20,
+html[data-theme='light'] .border-white\/25 {
+  border-color: rgb(var(--color-border)) !important;
+}
+
+html[data-theme='light'] .bg-obsidian\/95 {
+  background-color: rgb(var(--color-obsidian) / 0.96);
+}
+
+html[data-theme='light'] .bg-obsidian\/80 {
+  background-color: rgb(var(--color-obsidian) / 0.85);
+}
