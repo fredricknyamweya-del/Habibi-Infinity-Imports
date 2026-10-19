@@ -59,7 +59,7 @@ export default function Navbar() {
               Discover <FiChevronDown aria-hidden="true" />
             </button>
             {discoverOpen && (
-              <div className="absolute left-1/2 top-full z-50 w-[min(900px,90vw)] -translate-x-1/2 pt-5" id="discover-menu">
+              <div className="fixed left-1/2 top-[76px] z-[60] w-[min(900px,calc(100vw-2rem))] -translate-x-1/2 pt-3" id="discover-menu">
                 <MegaMenu onNavigate={() => setDiscoverOpen(false)} />
               </div>
             )}
