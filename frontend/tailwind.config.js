@@ -3,14 +3,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        obsidian: '#0B0B0D',
-        charcoal: '#16161A',
+        obsidian: 'rgb(var(--color-obsidian) / <alpha-value>)',
+        charcoal: 'rgb(var(--color-charcoal) / <alpha-value>)',
         gold: {
-          DEFAULT: '#D4B978',
-          soft: '#F1E3BC',
+          DEFAULT: 'rgb(var(--color-gold) / <alpha-value>)',
+          soft: 'rgb(var(--color-gold-soft) / <alpha-value>)',
         },
-        ivory: '#F7F3EA',
-        muted: '#A0A0A6',
+        ivory: 'rgb(var(--color-ivory) / <alpha-value>)',
+        muted: 'rgb(var(--color-muted) / <alpha-value>)',
+        line: 'rgb(var(--color-border) / <alpha-value>)',
       },
       fontFamily: {
         heading: ['Playfair Display', 'serif'],
@@ -20,7 +21,7 @@ export default {
         card: '12px',
       },
       boxShadow: {
-        glow: '0 0 28px rgba(212, 185, 120, 0.12)',
+        glow: '0 0 28px rgb(var(--color-gold) / 0.14)',
       },
     },
   },
