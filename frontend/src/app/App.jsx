@@ -5,6 +5,8 @@ import Catalogue from '../pages/Catalogue.jsx';
 import ProductDetail from '../pages/ProductDetail.jsx';
 import Cart from '../pages/Cart.jsx';
 import Checkout from '../pages/Checkout.jsx';
+import OrderConfirmation from '../pages/OrderConfirmation.jsx';
+import TrackOrder from '../pages/TrackOrder.jsx';
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
         <Route path="product/:id" element={<ProductDetail />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="order/success/:id" element={<OrderConfirmation />} />
+        <Route path="track" element={<TrackOrder />} />
       </Route>
     </Routes>
   );

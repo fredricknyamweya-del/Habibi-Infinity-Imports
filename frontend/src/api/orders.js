@@ -11,9 +11,15 @@ export async function createOrder(payload) {
 }
 
 export async function getOrder(id) {
+  let savedOrder = null;
+  try {
+    savedOrder = JSON.parse(localStorage.getItem(`habibi-order-${id}`) || 'null');
+  } catch (error) {
+    console.warn(`Could not restore saved order ${id}.`, error);
+  }
   return withMockFallback(
     async () => (await api.get(`/orders/${encodeURIComponent(id)}`)).data,
-    JSON.parse(localStorage.getItem(`habibi-order-${id}`) || 'null'),
+    savedOrder,
     'Order tracking',
   );
 }
