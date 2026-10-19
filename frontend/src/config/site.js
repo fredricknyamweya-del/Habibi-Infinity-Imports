@@ -26,3 +26,13 @@ export const site = {
     returns: '/returns',
   },
 };
+
+export const categories = [
+  { number: '01', name: 'Fashion & Apparel', slug: 'fashion-apparel', subcategories: ["Women's", "Men's", 'Designer', 'Bridal', 'Baby'] },
+  { number: '02', name: 'Bags & Handbags', slug: 'bags-handbags', subcategories: ['Handbags', 'Travel', 'Backpacks'] },
+  { number: '03', name: 'Beauty & Fragrance', slug: 'beauty-fragrance', subcategories: ['Perfumes', 'Cosmetics', 'Skincare'] },
+  { number: '04', name: 'Jewelry & Accessories', slug: 'jewelry-accessories', subcategories: ['Jewelry', 'Watches', 'Fashion Accessories'] },
+  { number: '05', name: 'Footwear', slug: 'footwear', subcategories: ['Women', 'Men', 'Children'] },
+  { number: '06', name: 'Phones & Mobile Accessories', slug: 'phones-mobile', subcategories: ['Phones', 'Cases', 'Chargers', 'Audio'] },
+  { number: '07', name: 'Electronics & Gadgets', slug: 'electronics-gadgets', subcategories: ['Smart devices', 'Audio', 'Tech accessories'] },
+];
