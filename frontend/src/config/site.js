@@ -4,8 +4,8 @@ const tanzaniaPhone = '+255 749 057 058';
 export const site = {
   name: 'Habibi Imports',
   locations: [
-    { city: 'Dar es Salaam', country: 'Tanzania', code: 'TZ' },
     { city: 'Nairobi', country: 'Kenya', code: 'KE' },
+    { city: 'Dar es Salaam', country: 'Tanzania', code: 'TZ' },
   ],
   contacts: {
     TZ: {

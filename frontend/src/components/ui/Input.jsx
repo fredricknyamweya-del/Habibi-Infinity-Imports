@@ -4,7 +4,7 @@ export default function Input({ label, id, className = '', ...props }) {
       {label}
       <input
         id={id}
-        className={`min-h-11 w-full rounded-lg border border-white/15 bg-obsidian px-3 text-ivory placeholder:text-white/35 focus:border-gold ${className}`.trim()}
+        className={`min-h-11 w-full rounded-lg border border-white/15 bg-obsidian px-3 text-ivory placeholder:text-muted focus:border-gold ${className}`.trim()}
         {...props}
       />
     </label>

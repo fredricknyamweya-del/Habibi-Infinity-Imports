@@ -52,7 +52,7 @@ export default function HeroShowcase() {
                 >
                   Imported Luxury. <span className="text-gold">Delivered</span> Across East Africa.
                 </motion.h1>
-                <p className="mt-6 max-w-lg text-base leading-7 text-white/75 md:text-lg">{slide.subtitle}</p>
+                <p className="mt-6 max-w-lg text-base leading-7 text-white md:text-lg">{slide.subtitle}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Button to="/shop">Explore the collection</Button>
                   <Button to="/shop?sort=newest" variant="ghost">New arrivals</Button>

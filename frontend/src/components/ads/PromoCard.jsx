@@ -8,7 +8,7 @@ export default function PromoCard({ ad }) {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-obsidian via-obsidian/45 to-transparent" />
       <Badge className="mb-3 w-fit">Sponsored</Badge>
       <h2 className="font-heading text-2xl">{ad.title}</h2>
-      <p className="mt-2 text-sm text-white/70">{ad.description}</p>
+      <p className="mt-2 text-sm text-white">{ad.description}</p>
     </Link>
   );
 }

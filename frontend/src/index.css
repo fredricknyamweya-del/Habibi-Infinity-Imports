@@ -61,3 +61,7 @@ html[data-theme='light'] .bg-obsidian\/95 {
 html[data-theme='light'] .bg-obsidian\/80 {
   background-color: rgb(var(--color-obsidian) / 0.85);
 }
+
+html[data-theme='dark'] .text-muted {
+  color: rgb(var(--color-muted)) !important;
+}

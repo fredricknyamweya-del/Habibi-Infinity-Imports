@@ -11,10 +11,10 @@ export default function ContactCard({ location }) {
         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gold/10 text-gold"><FiMapPin aria-hidden="true" /></span>
         <div>
           <h2 className="font-heading text-lg text-ivory">{location.city}</h2>
-          <p className="mt-0.5 text-xs uppercase tracking-widest text-muted">{location.country}</p>
+          <p className="mt-0.5 text-xs font-semibold uppercase tracking-widest text-muted">{location.country}</p>
         </div>
       </div>
-      <a className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-lg border border-line px-3 text-sm font-semibold text-ivory transition hover:border-gold hover:text-gold" href={`tel:${tel}`}>
+      <a className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-lg border border-line bg-obsidian px-3 text-sm font-semibold text-ivory transition hover:border-gold hover:text-gold" href={`tel:${tel}`}>
         <FiPhone aria-hidden="true" className="text-gold" />
         <span>{contact.phone}</span>
       </a>

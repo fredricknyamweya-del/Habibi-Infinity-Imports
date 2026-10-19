@@ -11,7 +11,7 @@ export default function CountrySwitcher({ className = '', compact = false }) {
       <select
         id={id}
         aria-label={compact ? 'Delivery country and currency' : undefined}
-        className={`min-h-10 rounded-full border border-line bg-charcoal text-xs text-ivory focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40 ${compact ? 'max-w-[82px] px-2' : 'px-3'}`}
+        className={`min-h-10 rounded-full border border-line bg-charcoal text-xs text-ivory focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40 ${compact ? 'max-w-[72px] px-1.5' : 'px-3'}`}
         onChange={(event) => setCountry(event.target.value)}
         value={country}
       >
