@@ -17,7 +17,7 @@ export default function FloatingWhatsApp() {
         hideTimeout = window.setTimeout(() => {
           setVisible(false);
           scheduleAppearance();
-        }, 2000);
+        }, 20000);
       }, 6000);
     };
 
@@ -42,12 +42,7 @@ export default function FloatingWhatsApp() {
           exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.7, rotate: 12 }}
           transition={reducedMotion ? { duration: 0.01 } : { type: 'spring', stiffness: 420, damping: 20 }}
         >
-          <motion.span
-            animate={reducedMotion ? undefined : { scale: [1, 1.12, 1], y: [0, -2, 0] }}
-            transition={reducedMotion ? undefined : { duration: 0.7, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <FaWhatsapp aria-hidden="true" />
-          </motion.span>
+          <FaWhatsapp aria-hidden="true" />
         </motion.a>
       )}
     </AnimatePresence>

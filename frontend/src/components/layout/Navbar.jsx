@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FiChevronDown, FiHeart, FiShoppingBag } from 'react-icons/fi';
 import { Link, useLocation } from 'react-router-dom';
 import { site } from '../../config/site.js';
@@ -12,12 +12,33 @@ import ThemeToggle from './ThemeToggle.jsx';
 
 export default function Navbar() {
   const [cartOpen, setCartOpen] = useState(false);
+  const [discoverOpen, setDiscoverOpen] = useState(false);
+  const discoverRef = useRef(null);
   const { itemCount } = useCart();
   const { pathname } = useLocation();
 
   useEffect(() => {
     setCartOpen(false);
+    setDiscoverOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!discoverOpen) return undefined;
+
+    const closeOnOutsideClick = (event) => {
+      if (!discoverRef.current?.contains(event.target)) setDiscoverOpen(false);
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setDiscoverOpen(false);
+    };
+
+    document.addEventListener('pointerdown', closeOnOutsideClick);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsideClick);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [discoverOpen]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-obsidian/95 backdrop-blur">
@@ -27,13 +48,21 @@ export default function Navbar() {
           <span className="block text-[9px] uppercase tracking-[0.34em] text-muted">Imports</span>
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
-          <div className="group relative">
-            <button className="flex items-center gap-1 text-sm text-ivory hover:text-gold" type="button">
+          <div className="relative" ref={discoverRef}>
+            <button
+              aria-controls="discover-menu"
+              aria-expanded={discoverOpen}
+              className="flex items-center gap-1 text-sm text-ivory hover:text-gold"
+              onClick={() => setDiscoverOpen((open) => !open)}
+              type="button"
+            >
               Discover <FiChevronDown aria-hidden="true" />
             </button>
-            <div className="invisible absolute left-1/2 top-full z-50 w-[min(900px,90vw)] -translate-x-1/2 pt-5 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-              <MegaMenu />
-            </div>
+            {discoverOpen && (
+              <div className="absolute left-1/2 top-full z-50 w-[min(900px,90vw)] -translate-x-1/2 pt-5" id="discover-menu">
+                <MegaMenu onNavigate={() => setDiscoverOpen(false)} />
+              </div>
+            )}
           </div>
           <Link className="text-sm text-ivory hover:text-gold" to="/shop">Shop all</Link>
           <Link className="text-sm text-ivory hover:text-gold" to="/shop?sort=newest">New arrivals</Link>
