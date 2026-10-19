@@ -21,7 +21,7 @@ export default function DeliveryMethod({ country, value, onChange }) {
         ))}
       </div>
       <p className="mt-5 rounded-lg border border-gold/20 bg-obsidian p-4 text-sm leading-6 text-muted">
-        Pickup is available at our Nairobi Shop, Mombasa Shop, and Dar es Salaam spot. For other regions without a physical shop, trusted delivery partners such as G4S, Wells Fargo, Easy Coach, and others will deliver your order. Partner delivery fees are charged to the client and included in the delivery details and total shown at checkout.
+        Pickup is available at our Nairobi Shop, Mombasa Shop, and Dar es Salaam Shop. For other regions without a physical shop, trusted delivery partners such as G4S, Wells Fargo, Easy Coach, and others will deliver your order. Partner delivery fees are charged to the client and included in the delivery details and total shown at checkout.
       </p>
     </section>
   );
