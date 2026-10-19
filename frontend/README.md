@@ -29,6 +29,10 @@ The Vite development server runs on `http://localhost:5173`. API requests use `V
 
 Copy `.env.example` to `.env` and set `VITE_API_URL` to the Flask API base URL. When the API is unavailable, catalog, category, order, payment, and ad services use local mock data so the storefront remains explorable.
 
+## Mock checkout flow
+
+With the API offline, open a product from `/shop`, add it to the bag, and complete the three checkout steps. The frontend stores the resulting demo order in local storage; use the order number on `/track` to view its local tracking status.
+
 ## Folder structure
 
 ```text
