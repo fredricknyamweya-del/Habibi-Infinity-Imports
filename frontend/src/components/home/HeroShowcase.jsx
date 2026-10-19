@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Autoplay, A11y, EffectFade } from 'swiper/modules';
@@ -57,7 +57,7 @@ export default function HeroShowcase() {
                   initial={reducedMotion ? undefined : { opacity: 0, y: 10 }}
                   transition={{ duration: 0.55 }}
                 >
-                  <span aria-label="Karibu Customer!" className="whitespace-pre" role="img">
+                  <span className="whitespace-pre">
                     {Array.from('Karibu Customer!').map((character, index) => (
                       <motion.span
                         animate={{ opacity: 1, x: 0 }}
