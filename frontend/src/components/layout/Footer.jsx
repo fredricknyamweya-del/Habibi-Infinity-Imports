@@ -1,5 +1,6 @@
 import { FaFacebookF, FaTiktok } from 'react-icons/fa';
 import { FiInstagram, FiMapPin } from 'react-icons/fi';
+import { MdOutlineEmail } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { site } from '../../config/site.js';
 import ContactCard from './ContactCard.jsx';
@@ -18,6 +19,7 @@ export default function Footer() {
             <a aria-label="Instagram" href={site.socials.instagram} rel="noreferrer" target="_blank"><FiInstagram /></a>
             <a aria-label="TikTok" href={site.socials.tiktok} rel="noreferrer" target="_blank"><FaTiktok /></a>
             <a aria-label="Facebook" href={site.socials.facebook} rel="noreferrer" target="_blank"><FaFacebookF /></a>
+            <a aria-label="Email" href={`mailto:${site.socials.email}`}><MdOutlineEmail /></a>
           </div>
         </div>
         {site.locations.map((location) => <ContactCard key={location.code} location={location} />)}

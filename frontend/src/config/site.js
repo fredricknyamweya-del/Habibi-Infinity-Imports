@@ -27,6 +27,7 @@ export const site = {
     instagram: 'https://www.instagram.com/',
     tiktok: 'https://www.tiktok.com/',
     facebook: 'https://www.facebook.com/',
+    email: 'your-email@example.com',
   },
   links: {
     delivery: '/delivery',
