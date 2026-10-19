@@ -2,6 +2,8 @@
 
 The storefront is a responsive React 18 and Vite 5 application for browsing imported goods and completing a mock-backed cart and checkout flow across Kenya and Tanzania.
 
+It uses React Router 6, Tailwind CSS v3, Bootstrap 5/react-bootstrap, Axios, Framer Motion, Swiper, React Icons, and react-hot-toast.
+
 ## Setup
 
 From this directory, install the dependencies and start the development server:
