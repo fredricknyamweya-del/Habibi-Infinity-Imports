@@ -12,6 +12,7 @@ import Review from '../features/checkout/Review.jsx';
 import Shipping from '../features/checkout/Shipping.jsx';
 import { useCart } from '../context/CartContext.jsx';
 import { useCountry } from '../context/CountryContext.jsx';
+import { DELIVERY_OPTIONS } from '../utils/constants.js';
 
 export default function Checkout() {
   const [step, setStep] = useState(1);
@@ -57,7 +58,11 @@ export default function Checkout() {
       const orderId = order.id || order.order_id || `HAB-${Date.now()}`;
       localStorage.setItem(`habibi-order-${orderId}`, JSON.stringify({ ...order, id: orderId, customer: { name: shipping.name, phone: shipping.phone }, items, subtotal }));
       if (payment === 'mpesa') {
-        await requestMpesaStk({ phone: paymentPhone, amount: subtotal, order_id: orderId });
+        await requestMpesaStk({
+          phone: paymentPhone,
+          amount: subtotal + DELIVERY_OPTIONS[shipping.country][delivery],
+          order_id: orderId,
+        });
       }
       clearCart();
       navigate(`/order/success/${encodeURIComponent(orderId)}`);
