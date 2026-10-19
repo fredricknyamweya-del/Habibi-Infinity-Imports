@@ -1,4 +1,5 @@
-import { FiArrowUpRight, FiInstagram, FiMapPin } from 'react-icons/fi';
+import { FaFacebookF, FaTiktok } from 'react-icons/fa';
+import { FiInstagram, FiMapPin } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { site } from '../../config/site.js';
 import ContactCard from './ContactCard.jsx';
@@ -12,7 +13,8 @@ export default function Footer() {
           <p className="mt-3 max-w-xs text-sm leading-6 text-muted">Thoughtfully sourced finds, delivered with care across East Africa.</p>
           <div className="mt-5 flex gap-4 text-lg text-gold">
             <a aria-label="Instagram" href={site.socials.instagram} rel="noreferrer" target="_blank"><FiInstagram /></a>
-            <a aria-label="Facebook" href={site.socials.facebook} rel="noreferrer" target="_blank"><FiArrowUpRight /></a>
+            <a aria-label="TikTok" href={site.socials.tiktok} rel="noreferrer" target="_blank"><FaTiktok /></a>
+            <a aria-label="Facebook" href={site.socials.facebook} rel="noreferrer" target="_blank"><FaFacebookF /></a>
           </div>
         </div>
         {site.locations.map((location) => <ContactCard key={location.code} location={location} />)}

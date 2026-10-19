@@ -25,6 +25,7 @@ export const site = {
   },
   socials: {
     instagram: 'https://www.instagram.com/',
+    tiktok: 'https://www.tiktok.com/',
     facebook: 'https://www.facebook.com/',
   },
   links: {
