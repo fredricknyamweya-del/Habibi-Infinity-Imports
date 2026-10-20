@@ -34,12 +34,21 @@ export default function Footer() {
         <h2 className="font-heading text-2xl text-ivory" id="pickup-points-heading">{localizedCopy(country, 'Pickup points', 'Sehemu za kuchukulia bidhaa')}</h2>
         <ul className="mt-4 grid list-none gap-3 p-0 sm:grid-cols-3">
           {site.pickupPoints.map((point) => (
-            <li className="flex min-h-14 items-center gap-3 rounded-card border border-white/10 bg-charcoal px-4 py-3" key={point.name}>
-              <FiMapPin aria-hidden="true" className="shrink-0 text-gold" />
-              <span>
-                <span className="block text-sm font-semibold text-ivory">{point.name}</span>
-                <span className="mt-0.5 block text-xs text-muted">{point.country}</span>
-              </span>
+            <li className="min-h-14 rounded-card border border-white/10 bg-charcoal" key={point.name}>
+              <a
+                aria-label={`${localizedCopy(country, 'View', 'Tazama')} ${point.name} ${localizedCopy(country, 'on Google Maps', 'kwenye Ramani za Google')}`}
+                className="flex h-full min-h-14 items-center gap-3 rounded-card px-4 py-3 transition hover:bg-gold/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${point.name}, ${point.city}, ${point.country}`)}`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <FiMapPin aria-hidden="true" className="shrink-0 text-gold" />
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-semibold text-ivory">{point.name}</span>
+                  <span className="mt-0.5 block text-xs text-muted">{point.country}</span>
+                  <span className="mt-2 block text-xs font-semibold text-gold">{localizedCopy(country, 'View on Google Maps', 'Tazama kwenye Ramani za Google')}</span>
+                </span>
+              </a>
             </li>
           ))}
         </ul>
