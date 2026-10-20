@@ -1,8 +1,13 @@
-const steps = ['Shipping', 'Delivery', 'Payment'];
+import { localizedCopy } from '../../utils/localization.js';
 
-export default function CheckoutProgress({ currentStep }) {
+export default function CheckoutProgress({ currentStep, country }) {
+  const steps = [
+    localizedCopy(country, 'Shipping', 'Usafirishaji'),
+    localizedCopy(country, 'Delivery', 'Uwasilishaji'),
+    localizedCopy(country, 'Payment', 'Malipo'),
+  ];
   return (
-    <ol aria-label="Checkout progress" className="mb-8 grid grid-cols-3 gap-2">
+    <ol aria-label={localizedCopy(country, 'Checkout progress', 'Hatua za kukamilisha oda')} className="mb-8 grid grid-cols-3 gap-2">
       {steps.map((label, index) => {
         const step = index + 1;
         return (

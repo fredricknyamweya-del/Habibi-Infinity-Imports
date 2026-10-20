@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext.jsx';
 import { useCountry } from '../../context/CountryContext.jsx';
 import { formatCurrency, getProductPrice } from '../../utils/formatCurrency.js';
+import { localizedCopy } from '../../utils/localization.js';
 
 export default function CartLine({ item, compact = false }) {
   const { removeItem, updateQuantity } = useCart();
@@ -13,15 +14,15 @@ export default function CartLine({ item, compact = false }) {
       <div className="min-w-0">
         <p className="text-[10px] uppercase tracking-widest text-muted">{item.product.categoryName}</p>
         <Link className="mt-1 block truncate font-heading text-lg hover:text-gold" to={`/product/${item.product.id}`}>{item.product.name}</Link>
-        {item.variant && <p className="mt-1 text-xs text-muted">Variant: {item.variant}</p>}
+        {item.variant && <p className="mt-1 text-xs text-muted">{localizedCopy(country, 'Variant:', 'Aina:')} {item.variant}</p>}
         <p className="mt-2 text-sm font-semibold text-gold">{formatCurrency(getProductPrice(item.product, country), country)}</p>
         <div className="mt-3 flex items-center gap-3">
           <div className="flex items-center rounded-full border border-white/15">
-            <button aria-label={`Decrease quantity of ${item.product.name}`} className="h-8 w-8" onClick={() => updateQuantity(item.key, item.qty - 1)} type="button">−</button>
+            <button aria-label={`${localizedCopy(country, 'Decrease quantity of', 'Punguza idadi ya')} ${item.product.name}`} className="h-8 w-8" onClick={() => updateQuantity(item.key, item.qty - 1)} type="button">−</button>
             <span className="min-w-5 text-center text-xs">{item.qty}</span>
-            <button aria-label={`Increase quantity of ${item.product.name}`} className="h-8 w-8" onClick={() => updateQuantity(item.key, item.qty + 1)} type="button">+</button>
+            <button aria-label={`${localizedCopy(country, 'Increase quantity of', 'Ongeza idadi ya')} ${item.product.name}`} className="h-8 w-8" onClick={() => updateQuantity(item.key, item.qty + 1)} type="button">+</button>
           </div>
-          <button aria-label={`Remove ${item.product.name} from cart`} className="text-xs text-muted hover:text-red-300" onClick={() => removeItem(item.key)} type="button"><FiTrash2 /></button>
+          <button aria-label={`${localizedCopy(country, 'Remove', 'Ondoa')} ${item.product.name} ${localizedCopy(country, 'from cart', 'kwenye kikapu')}`} className="text-xs text-muted hover:text-red-300" onClick={() => removeItem(item.key)} type="button"><FiTrash2 /></button>
         </div>
       </div>
       {!compact && <p className="text-sm font-semibold">{formatCurrency(getProductPrice(item.product, country) * item.qty, country)}</p>}

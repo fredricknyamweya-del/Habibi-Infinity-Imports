@@ -77,7 +77,7 @@ export default function Checkout() {
   return (
     <Container className="max-w-4xl py-10">
       <div className="mb-7 flex items-end justify-between"><div><p className="text-xs uppercase tracking-[0.2em] text-gold">{localizedCopy(country, 'Almost yours', 'Umebakiza hatua chache')}</p><h1 className="mt-2 font-heading text-4xl">{localizedCopy(country, 'Checkout', 'Kamilisha malipo')}</h1></div><Link className="text-xs text-muted hover:text-gold" to="/cart">{localizedCopy(country, 'Return to bag', 'Rudi kwenye kikapu')}</Link></div>
-      <CheckoutProgress currentStep={step} />
+      <CheckoutProgress country={country} currentStep={step} />
       <form className="rounded-card border border-white/10 bg-charcoal p-5 sm:p-8" onSubmit={step < 3 ? goNext : placeOrder}>
         {step === 1 && <Shipping onChange={(next) => setShipping(next)} value={shipping} />}
         {step === 2 && <DeliveryMethod country={shipping.country} onChange={setDelivery} value={delivery} />}
