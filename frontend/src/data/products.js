@@ -1,5 +1,4 @@
 import { categories } from '../config/site.js';
-import { localizedProductName } from '../utils/localization.js';
 
 const catalog = [
   ['Silk Evening Dress', 18400, 'fashion-apparel', "Women's", 4.8],
@@ -33,13 +32,12 @@ export const mockProducts = catalog.map(([name, price, category, subcategory, ra
   return {
     id: `HII-${String(index + 1).padStart(4, '0')}`,
     name,
-    nameSwahili: localizedProductName('TZ', name),
     slug: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
     category,
     categoryName: categoryInfo.name,
     subcategory,
     description: `${name}, thoughtfully sourced for a refined everyday. Designed to feel considered, last beautifully, and arrive ready to enjoy.`,
-    descriptionSwahili: `${localizedProductName('TZ', name)}, imechaguliwa kwa umakini ili kukupa ubora na mtindo unaofaa kwa matumizi ya kila siku.`,
+    descriptionSwahili: `${name}, imechaguliwa kwa umakini ili kukupa ubora na mtindo unaofaa kwa matumizi ya kila siku.`,
     image: `https://images.unsplash.com/photo-${[
       '1483985988355-763728e1935b', '1490481651871-ab68de25d43d', '1521572163474-6864f9cf17ab',
       '1548036328-c9fa89d128fa', '1584917865442-de89df76afd3', '1590874103328-eac38a683ce7',
