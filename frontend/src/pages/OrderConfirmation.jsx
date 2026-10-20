@@ -7,6 +7,7 @@ import { useCountry } from '../context/CountryContext.jsx';
 import { formatCurrency, getProductPrice } from '../utils/formatCurrency.js';
 import { DELIVERY_OPTIONS } from '../utils/constants.js';
 import { localizedCopy } from '../utils/localization.js';
+import { localizedOrderStatus } from '../utils/localization.js';
 
 export default function OrderConfirmation() {
   const { id } = useParams();

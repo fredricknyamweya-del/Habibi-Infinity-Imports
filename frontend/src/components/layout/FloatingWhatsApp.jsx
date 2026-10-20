@@ -50,7 +50,7 @@ export default function FloatingWhatsApp() {
     <AnimatePresence>
       {visible && !footerVisible && (
         <motion.div
-          aria-label={`Contact Habibi Infinity Imports in ${countryName}`}
+          aria-label={`${localizedCopy(country, 'Contact', 'Wasiliana na')} Habibi Infinity Imports ${localizedCopy(country, 'in', 'nchini')} ${countryName}`}
           className="fixed bottom-4 right-3 z-30 max-w-[calc(100vw-1.5rem)] rounded-2xl border border-gold/35 bg-charcoal/95 p-2.5 shadow-glow backdrop-blur-md md:bottom-5 md:right-5"
           initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 20, scale: 0.65, rotate: -12 }}
           animate={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1, rotate: 0 }}
@@ -61,7 +61,7 @@ export default function FloatingWhatsApp() {
           <p className="mb-2 px-1 text-xs font-medium text-ivory">{localizedCopy(country, `Need a hand in ${countryName}?`, `Unahitaji msaada nchini ${countryName}?`)}</p>
           <div className="flex items-center">
             <a
-              aria-label={`Message Habibi Infinity Imports on WhatsApp in ${countryName}`}
+              aria-label={`${localizedCopy(country, 'Message Habibi Infinity Imports on WhatsApp in', 'Tuma ujumbe kwa Habibi Infinity Imports kupitia WhatsApp nchini')} ${countryName}`}
               className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-[#25D366] px-3 text-xs font-semibold text-[#062b14] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
               href={contact.whatsapp}
               rel="noreferrer"
@@ -71,12 +71,12 @@ export default function FloatingWhatsApp() {
               WhatsApp
             </a>
             <a
-              aria-label={`Call ${countryName} support at ${contact.phone}`}
+              aria-label={`${localizedCopy(country, 'Call', 'Piga simu kwa')} ${localizedCopy(country, 'support in', 'huduma kwa wateja nchini')} ${countryName} ${localizedCopy(country, 'at', 'kwenye nambari')} ${contact.phone}`}
               className="ml-1 inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-gold/50 bg-obsidian px-3 text-xs font-semibold text-gold transition hover:bg-gold hover:text-obsidian focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
               href={phoneLink}
             >
               <FiPhone aria-hidden="true" className="text-sm" />
-              Call
+              {localizedCopy(country, 'Call', 'Piga simu')}
             </a>
           </div>
         </motion.div>

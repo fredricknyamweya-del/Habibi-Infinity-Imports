@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useCountry } from '../context/CountryContext.jsx';
+import { localizedCopy } from '../utils/localization.js';
 import RootLayout from './layouts/RootLayout.jsx';
 
 const Home = lazy(() => import('../pages/Home.jsx'));
@@ -13,8 +15,9 @@ const Wishlist = lazy(() => import('../pages/Wishlist.jsx'));
 const NotFound = lazy(() => import('../pages/NotFound.jsx'));
 
 export default function App() {
+  const { country } = useCountry();
   return (
-    <Suspense fallback={<div aria-live="polite" className="grid min-h-[55vh] place-items-center text-sm text-muted">Loading Habibi Infinity Imports…</div>}>
+    <Suspense fallback={<div aria-live="polite" className="grid min-h-[55vh] place-items-center text-sm text-muted">{localizedCopy(country, 'Loading Habibi Infinity Imports…', 'Inapakia Habibi Infinity Imports…')}</div>}>
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />

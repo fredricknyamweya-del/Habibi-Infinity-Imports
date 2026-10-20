@@ -14,7 +14,7 @@ import { useCountry } from '../context/CountryContext.jsx';
 import { formatCurrency, getProductPrice } from '../utils/formatCurrency.js';
 import { mockProducts } from '../data/products.js';
 import WishlistButton from '../components/catalog/WishlistButton.jsx';
-import { localizedCopy } from '../utils/localization.js';
+import { localizedCategoryName, localizedCopy } from '../utils/localization.js';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -51,7 +51,7 @@ export default function ProductDetail() {
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-14">
         <Gallery product={product} />
         <div className="lg:py-5">
-          <p className="text-xs uppercase tracking-[0.2em] text-gold">{product.categoryName}</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-gold">{localizedCategoryName(country, product.categoryName)}</p>
           <h1 className="mt-3 font-heading text-4xl leading-tight md:text-5xl">{product.name}</h1>
           <div className="mt-4 flex items-center gap-3"><span className="text-gold">★ {product.rating}</span><span className="text-xs text-muted">{product.reviewCount} {localizedCopy(country, 'reviews', 'maoni')}</span></div>
           <p className="mt-5 text-2xl font-semibold text-gold">{formatCurrency(getProductPrice(product, country), country)}</p>

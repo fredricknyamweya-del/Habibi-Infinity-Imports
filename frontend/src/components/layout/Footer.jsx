@@ -44,7 +44,7 @@ export default function Footer() {
               >
                 <FiMapPin aria-hidden="true" className="shrink-0 text-gold" />
                 <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-semibold text-ivory">{point.name}</span>
+                  <span className="block text-sm font-semibold text-ivory">{country === 'TZ' ? `Duka la ${point.city}` : point.name}</span>
                   <span className="mt-0.5 block text-xs text-muted">{point.country}</span>
                   <span className="mt-2 block text-xs font-semibold text-gold">{localizedCopy(country, 'View on Google Maps', 'Tazama kwenye Ramani za Google')}</span>
                 </span>
