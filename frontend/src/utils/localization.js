@@ -76,6 +76,11 @@ export function localizedOrderStatus(country, status) {
   return country === 'TZ' ? labels[normalized] || normalized : normalized;
 }
 
+export function localizedAdText(country, ad, field) {
+  if (country !== 'TZ') return ad[field];
+  return ad[`${field}Swahili`] || (field === 'title' ? 'Chaguo maalum' : 'Gundua bidhaa zilizochaguliwa kwa ajili yako.');
+}
+
 export function localizedStatus(country, status) {
   return country === 'TZ' ? statusLabels[status] || status : status;
 }
