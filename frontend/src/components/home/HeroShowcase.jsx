@@ -15,6 +15,11 @@ const slides = [
   { title: 'The art of arriving well.', subtitle: 'Find your next favourite, sourced from around the world.', image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=90' },
   { title: 'Everyday, elevated.', subtitle: 'A little luxury, delivered to your doorstep.', image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=90' },
 ];
+const slideTitlesSwahili = [
+  'Msimu mpya, uliochaguliwa kwa umakini.',
+  'Sanaa ya kuwasili kwa mtindo.',
+  'Mtindo wa kila siku, ulioboreshwa.',
+];
 
 export default function HeroShowcase() {
   const [swiper, setSwiper] = useState(null);
@@ -66,7 +71,7 @@ export default function HeroShowcase() {
                 <div className="mt-9 flex gap-2" role="group" aria-label={localizedCopy(country, 'Choose featured slide', 'Chagua ukurasa wa picha')}>
                   {slides.map((item, dotIndex) => (
                     <button
-                      aria-label={`${localizedCopy(country, 'Show slide', 'Onyesha picha')} ${dotIndex + 1}: ${item.title}`}
+                      aria-label={`${localizedCopy(country, 'Show slide', 'Onyesha picha')} ${dotIndex + 1}: ${localizedCopy(country, item.title, slideTitlesSwahili[dotIndex])}`}
                       aria-pressed={active === dotIndex}
                       className={`h-1.5 rounded-full transition-all ${active === dotIndex ? 'w-10 bg-gold' : 'w-5 bg-white/35'}`}
                       key={item.title}

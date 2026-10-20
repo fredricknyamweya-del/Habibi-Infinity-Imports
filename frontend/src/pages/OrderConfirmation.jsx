@@ -6,8 +6,7 @@ import Container from '../components/ui/Container.jsx';
 import { useCountry } from '../context/CountryContext.jsx';
 import { formatCurrency, getProductPrice } from '../utils/formatCurrency.js';
 import { DELIVERY_OPTIONS } from '../utils/constants.js';
-import { localizedCopy } from '../utils/localization.js';
-import { localizedOrderStatus } from '../utils/localization.js';
+import { localizedCopy, localizedVariantName } from '../utils/localization.js';
 
 export default function OrderConfirmation() {
   const { id } = useParams();
@@ -40,7 +39,7 @@ export default function OrderConfirmation() {
         </div>
         {order && <div className="mt-6 text-left">
           <h2 className="font-heading text-xl">{localizedCopy(country, 'Order summary', 'Muhtasari wa oda')}</h2>
-          <div className="mt-3 divide-y divide-white/10">{items.map((item, index) => <p className="flex justify-between gap-3 py-3 text-sm" key={item.key || item.product_id || index}><span>{item.qty} × {item.product?.name || item.name || item.product_id}</span><span className="text-gold">{formatCurrency(getProductPrice(item.product || item, orderCountry) * item.qty, orderCountry)}</span></p>)}</div>
+          <div className="mt-3 divide-y divide-white/10">{items.map((item, index) => <p className="flex justify-between gap-3 py-3 text-sm" key={item.key || item.product_id || index}><span>{item.qty} × {item.product?.name || item.name || item.product_id}{item.variant ? ` · ${localizedCopy(country, item.variant, localizedVariantName(country, item.variant))}` : ''}</span><span className="text-gold">{formatCurrency(getProductPrice(item.product || item, orderCountry) * item.qty, orderCountry)}</span></p>)}</div>
           <div className="mt-3 border-t border-white/10 pt-3 text-sm"><p className="flex justify-between text-muted"><span>{localizedCopy(country, 'Estimated total', 'Jumla inayokadiriwa')}</span><span className="font-semibold text-gold">{formatCurrency(total, orderCountry)}</span></p></div>
         </div>}
         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
