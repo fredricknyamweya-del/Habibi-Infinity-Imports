@@ -38,6 +38,13 @@ const subcategoryNames = {
   'Tech accessories': 'Vifaa vya teknolojia',
 };
 
+const variantNames = {
+  Black: 'Nyeusi',
+  Ivory: 'Nyeupe ya pembe',
+  Tan: 'Hudhurungi',
+  'One size': 'Saizi moja',
+};
+
 const statusLabels = {
   New: 'Mpya',
   Sale: 'Ofa',
@@ -52,6 +59,21 @@ export function localizedCategoryName(country, name) {
 
 export function localizedSubcategoryName(country, name) {
   return country === 'TZ' ? subcategoryNames[name] || name : name;
+}
+
+export function localizedVariantName(country, name) {
+  return country === 'TZ' ? variantNames[name] || name : name;
+}
+
+export function localizedOrderStatus(country, status) {
+  const labels = {
+    processing: 'Inashughulikiwa',
+    confirmed: 'Imethibitishwa',
+    shipped: 'Imesafirishwa',
+    delivered: 'Imefikishwa',
+  };
+  const normalized = String(status || '').toLowerCase().replaceAll('_', ' ');
+  return country === 'TZ' ? labels[normalized] || normalized : normalized;
 }
 
 export function localizedStatus(country, status) {
