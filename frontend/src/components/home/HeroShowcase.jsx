@@ -47,9 +47,13 @@ export default function HeroShowcase() {
               <img alt="" className="h-full w-full object-cover opacity-45" src={slide.image} />
             </div>
             <div className="absolute inset-0 -z-10 bg-gradient-to-r from-obsidian via-obsidian/80 to-obsidian/20" />
+            <div className="pointer-events-none absolute inset-x-0 top-6 z-10 md:top-8">
+              <div className="page-shell flex justify-end">
+                <WelcomeBanner />
+              </div>
+            </div>
             <div className="page-shell flex min-h-[540px] items-center py-16 md:min-h-[570px]">
               <div className="max-w-2xl">
-                <WelcomeBanner />
                 <p className="mb-5 text-xs font-semibold uppercase tracking-[0.3em] text-gold">{localizedCopy(country, 'A world of beautiful finds', 'Dunia ya bidhaa nzuri')}</p>
                 <motion.h1
                   animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}

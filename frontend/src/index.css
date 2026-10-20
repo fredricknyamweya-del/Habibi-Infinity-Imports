@@ -45,7 +45,7 @@
   .welcome-banner {
     color: rgb(var(--color-gold));
     font-family: var(--font-display);
-    font-size: clamp(2rem, 6vw, 4rem);
+    font-size: clamp(1.5rem, 4vw, 3rem);
     letter-spacing: 0.02em;
     line-height: 1.1;
   }
