@@ -42,6 +42,14 @@
       @apply rounded-card border border-line bg-charcoal;
   }
 
+  .welcome-banner {
+    color: rgb(var(--color-gold));
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
   .gold-outline {
     @apply border border-gold/30 transition duration-300 hover:border-gold hover:shadow-glow;
   }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Autoplay, A11y, EffectFade } from 'swiper/modules';
@@ -8,6 +8,7 @@ import 'swiper/css/effect-fade';
 import Button from '../ui/Button.jsx';
 import { useCountry } from '../../context/CountryContext.jsx';
 import { localizedCopy } from '../../utils/localization.js';
+import WelcomeBanner from './WelcomeBanner.jsx';
 
 const slides = [
   { title: 'A new season, beautifully considered.', subtitle: 'Discover pieces chosen for the way you live.', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=90' },
@@ -18,16 +19,9 @@ const slides = [
 export default function HeroShowcase() {
   const [swiper, setSwiper] = useState(null);
   const [active, setActive] = useState(0);
-  const [greetingKey, setGreetingKey] = useState(0);
   const reducedMotion = useReducedMotion();
   const { country } = useCountry();
   const isSwahili = country === 'TZ';
-
-  useEffect(() => {
-    if (reducedMotion) return undefined;
-    const interval = window.setInterval(() => setGreetingKey((key) => key + 1), 10000);
-    return () => window.clearInterval(interval);
-  }, [reducedMotion]);
 
   return (
     <section
@@ -55,25 +49,7 @@ export default function HeroShowcase() {
             <div className="absolute inset-0 -z-10 bg-gradient-to-r from-obsidian via-obsidian/80 to-obsidian/20" />
             <div className="page-shell flex min-h-[540px] items-center py-16 md:min-h-[570px]">
               <div className="max-w-2xl">
-                <motion.p
-                  animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-obsidian/70 px-4 py-2 text-sm font-semibold tracking-wide text-gold shadow-glow backdrop-blur"
-                  initial={reducedMotion ? undefined : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.55 }}
-                >
-                  <span className="whitespace-pre">
-                    {Array.from('Karibu Customer!').map((character, index) => (
-                      <motion.span
-                        animate={{ opacity: 1, x: 0 }}
-                        initial={reducedMotion ? false : { opacity: 0, x: -16 }}
-                        key={`${greetingKey}-${index}`}
-                        transition={{ delay: reducedMotion ? 0 : index * 0.035, duration: 0.3, ease: 'easeOut' }}
-                      >
-                        {character === ' ' ? '\u00a0' : character}
-                      </motion.span>
-                    ))}
-                  </span>
-                </motion.p>
+                <WelcomeBanner />
                 <p className="mb-5 text-xs font-semibold uppercase tracking-[0.3em] text-gold">{localizedCopy(country, 'A world of beautiful finds', 'Dunia ya bidhaa nzuri')}</p>
                 <motion.h1
                   animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}

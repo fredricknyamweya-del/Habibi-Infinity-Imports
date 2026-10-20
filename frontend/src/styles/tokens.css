@@ -3,6 +3,7 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   color-scheme: light;
+  --font-display: "Povie", "Permanent Marker", cursive;
   --color-obsidian: 248 247 243;
   --color-charcoal: 255 255 255;
   --color-gold: 139 105 35;
