@@ -3,9 +3,12 @@ import { getAds } from '../../api/ads.js';
 import Badge from '../ui/Badge.jsx';
 import LeaderboardAd from './LeaderboardAd.jsx';
 import PromoCard from './PromoCard.jsx';
+import { useCountry } from '../../context/CountryContext.jsx';
+import { localizedCopy } from '../../utils/localization.js';
 
 export default function AdSlot({ placement = 'leaderboard', className = '' }) {
   const [ads, setAds] = useState([]);
+  const { country } = useCountry();
   useEffect(() => {
     let active = true;
     getAds(placement).then((result) => {
@@ -16,7 +19,7 @@ export default function AdSlot({ placement = 'leaderboard', className = '' }) {
   }, [placement]);
   if (!ads.length) return null;
   return (
-    <aside aria-label="Sponsored content" className={className}>
+    <aside aria-label={localizedCopy(country, 'Sponsored content', 'Maudhui yaliyodhaminiwa')} className={className}>
       {placement === 'leaderboard'
         ? <LeaderboardAd ad={ads[0]} />
         : placement === 'in-grid'

@@ -67,7 +67,7 @@ export default function Navbar() {
               </div>
             )}
           </div>
-          <Link className="text-sm text-ivory hover:text-gold" to="/shop">{localizedCopy(country, 'Shop all', 'Nunua zote')}</Link>
+          <Link className="text-sm text-ivory hover:text-gold" to="/shop">{localizedCopy(country, 'Shop all', 'Nunua')}</Link>
           <Link className="text-sm text-ivory hover:text-gold" to="/shop?sort=newest">{localizedCopy(country, 'New arrivals', 'Zilizowasili karibuni')}</Link>
         </nav>
         <SearchBar className="hidden w-56 lg:block" />
