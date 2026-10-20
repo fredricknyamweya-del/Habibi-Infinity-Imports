@@ -81,7 +81,7 @@ export default function Checkout() {
       <form className="rounded-card border border-white/10 bg-charcoal p-5 sm:p-8" onSubmit={step < 3 ? goNext : placeOrder}>
         {step === 1 && <Shipping onChange={(next) => setShipping(next)} value={shipping} />}
         {step === 2 && <DeliveryMethod country={shipping.country} onChange={setDelivery} value={delivery} />}
-        {step === 3 && <><Payment currency={currency} method={payment} onMethodChange={setPayment} onPhoneChange={setPaymentPhone} phone={paymentPhone} /><div className="mt-8"><Review delivery={delivery} payment={payment} shipping={shipping} /></div></>}
+        {step === 3 && <><Payment country={shipping.country} currency={currency} method={payment} onMethodChange={setPayment} onPhoneChange={setPaymentPhone} phone={paymentPhone} /><div className="mt-8"><Review delivery={delivery} payment={payment} shipping={shipping} /></div></>}
         <div className="mt-8 flex justify-between gap-3 border-t border-white/10 pt-5">
           {step > 1 ? <Button onClick={() => setStep(step - 1)} type="button" variant="ghost">{localizedCopy(country, 'Back', 'Rudi nyuma')}</Button> : <span />}
           <Button disabled={submitting || (step === 3 && payment === 'card')} type="submit">{submitting ? localizedCopy(country, 'Placing order…', 'Oda inakamilishwa…') : step === 3 ? localizedCopy(country, 'Place order', 'Weka oda') : localizedCopy(country, 'Continue', 'Endelea')}</Button>
