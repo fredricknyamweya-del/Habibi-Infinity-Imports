@@ -4,7 +4,7 @@ import { localizedCopy } from '../../utils/localization.js';
 
 const benefits = (country) => [
   { icon: FiCreditCard, title: localizedCopy(country, 'Secure M-Pesa', 'M-Pesa salama'), copy: localizedCopy(country, 'Easy local payments', 'Lipa kwa urahisi nchini') },
-  { icon: FiTruck, title: localizedCopy(country, 'Delivery in KE & TZ', 'Uwasilishaji KE na TZ'), copy: localizedCopy(country, 'To your doorstep', 'Hadi mlangoni kwako') },
+  { icon: FiTruck, title: localizedCopy(country, 'Delivery in KE & TZ', 'Uwasilishaji Kenya na Tanzania'), copy: localizedCopy(country, 'To your doorstep', 'Hadi mlangoni kwako') },
   { icon: FiShield, title: localizedCopy(country, 'Genuine imports', 'Bidhaa halisi zilizoagizwa'), copy: localizedCopy(country, 'Quality, always', 'Ubora kila wakati') },
   { icon: FiRefreshCw, title: localizedCopy(country, 'Easy returns', 'Urejeshaji rahisi'), copy: localizedCopy(country, 'Shop with confidence', 'Nunua kwa uhakika') },
 ];

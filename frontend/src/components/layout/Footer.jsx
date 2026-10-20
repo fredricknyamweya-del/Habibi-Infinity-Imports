@@ -56,7 +56,7 @@ export default function Footer() {
           {localizedCopy(country, 'Outside these shop locations, deliveries across the region are handled by Trusted partners such as G4S, Wells Fargo, Easy Coach and other trusted shipping stakeholders of clients choice. Delivery fees are charged to the client and shown in the checkout details.', 'Nje ya maeneo haya ya maduka, bidhaa husafirishwa kote katika ukanda huu kupitia washirika wanaoaminika kama G4S, Wells Fargo, Easy Coach na wadau wengine wa usafirishaji wanaochaguliwa na mteja. Gharama za usafirishaji hulipwa na mteja na huonyeshwa kwenye maelezo ya malipo wakati wa kukamilisha oda.')}
         </p>
       </section>
-      <div className="border-t border-white/10 py-4 text-center text-xs text-muted">© {new Date().getFullYear()} Habibi Infinity Imports. All rights reserved.</div>
+      <div className="border-t border-white/10 py-4 text-center text-xs text-muted">© {new Date().getFullYear()} Habibi Infinity Imports. {localizedCopy(country, 'All rights reserved.', 'Haki zote zimehifadhiwa.')}</div>
     </footer>
   );
 }

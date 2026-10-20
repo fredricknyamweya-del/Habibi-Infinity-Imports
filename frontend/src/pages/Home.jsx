@@ -49,7 +49,7 @@ export default function Home() {
       <AdSlot className="my-6" placement="leaderboard" />
       <section className="py-10">
         <SectionTitle action={<Link className="text-sm text-gold hover:text-gold-soft" to="/shop">{localizedCopy(country, 'All categories', 'Aina zote')} ↗</Link>} eyebrow={localizedCopy(country, 'The Habibi edit', 'Chaguo la Habibi')} title={localizedCopy(country, 'Shop by category', 'Nunua kwa aina')} />
-        <div aria-label="Shop by category" className={`category-marquee ${reducedMotion ? 'overflow-x-auto' : 'overflow-hidden'}`}>
+        <div aria-label={localizedCopy(country, 'Shop by category', 'Nunua kwa aina')} className={`category-marquee ${reducedMotion ? 'overflow-x-auto' : 'overflow-hidden'}`}>
           <div className={`category-marquee-track flex w-max ${reducedMotion ? '' : 'category-marquee-animated'}`}>
             {[0, ...(reducedMotion ? [] : [1])].map((copy) => (
               <div aria-hidden={copy === 1 ? 'true' : undefined} className="flex shrink-0 gap-3 pr-3" key={copy}>

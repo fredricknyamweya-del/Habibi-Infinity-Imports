@@ -29,7 +29,7 @@ export default function SearchBar({ onSearch, className = '' }) {
         placeholder={searchLabel}
         value={query}
       />
-      <button aria-label="Submit product search" className="absolute right-3 top-1/2 -translate-y-1/2 text-gold" type="submit">
+      <button aria-label={localizedCopy(country, 'Submit product search', 'Tafuta bidhaa')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gold" type="submit">
         <FiSearch aria-hidden="true" />
       </button>
     </form>

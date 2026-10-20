@@ -46,7 +46,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-obsidian/95 backdrop-blur">
       <div className="page-shell flex h-16 items-center justify-between gap-2 md:h-[76px] md:gap-5">
-        <Link aria-label={`${site.name} home`} className="shrink-0" to="/">
+        <Link aria-label={`${site.name} ${localizedCopy(country, 'home', 'mwanzo')}`} className="shrink-0" to="/">
           <span className="block font-heading text-xl tracking-wide text-gold">HABIBI</span>
           <span className="block text-[9px] uppercase tracking-[0.18em] text-muted">Infinity Imports</span>
         </Link>
@@ -75,8 +75,8 @@ export default function Navbar() {
         <div className="flex items-center gap-1.5 sm:gap-3">
           <CountrySwitcher className="md:hidden" compact />
           <ThemeToggle />
-          <Link aria-label="Wishlist" className="inline-flex p-2 text-lg text-ivory hover:text-gold" to="/wishlist"><FiHeart /></Link>
-          <button aria-label={`Shopping cart, ${itemCount} items`} className="relative p-2 text-xl text-ivory hover:text-gold" onClick={() => setCartOpen(true)} type="button">
+          <Link aria-label={localizedCopy(country, 'Wishlist', 'Orodha ya vipendwa')} className="inline-flex p-2 text-lg text-ivory hover:text-gold" to="/wishlist"><FiHeart /></Link>
+          <button aria-label={`${localizedCopy(country, 'Shopping cart', 'Kikapu cha ununuzi')}, ${itemCount} ${localizedCopy(country, 'items', 'bidhaa')}`} className="relative p-2 text-xl text-ivory hover:text-gold" onClick={() => setCartOpen(true)} type="button">
             <FiShoppingBag aria-hidden="true" />
             {itemCount > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[10px] font-bold text-obsidian">{itemCount}</span>}
           </button>

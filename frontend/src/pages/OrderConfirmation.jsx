@@ -33,7 +33,7 @@ export default function OrderConfirmation() {
         <h1 className="mt-2 font-heading text-4xl">{localizedCopy(country, 'Your order is in.', 'Oda yako imepokelewa.')}</h1>
         <p className="mt-3 text-sm text-muted">{loading ? localizedCopy(country, 'Loading order details…', 'Tunapakia maelezo ya oda…') : order ? localizedCopy(country, 'We’re preparing your carefully chosen pieces.', 'Tunatayarisha bidhaa ulizochagua kwa uangalifu.') : localizedCopy(country, 'Your order was submitted. We could not retrieve its full details just now.', 'Oda yako imetumwa, lakini hatukuweza kupata maelezo yake yote kwa sasa.')}</p>
         <div className="mt-7 rounded-lg border border-white/10 p-4">
-          <p className="text-xs uppercase tracking-widest text-muted">Order number</p>
+          <p className="text-xs uppercase tracking-widest text-muted">{localizedCopy(country, 'Order number', 'Nambari ya oda')}</p>
           <p className="mt-2 font-heading text-xl text-gold">{decodeURIComponent(id)}</p>
           {order?.customer?.name && <p className="mt-2 text-sm text-muted">{localizedCopy(country, `We’ll keep you updated, ${order.customer.name}.`, `Tutakupa taarifa kuhusu oda yako, ${order.customer.name}.`)}</p>}
         </div>
