@@ -9,12 +9,15 @@ import SearchBar from './SearchBar.jsx';
 import CartDrawer from './CartDrawer.jsx';
 import { useCart } from '../../context/CartContext.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
+import { useCountry } from '../../context/CountryContext.jsx';
+import { localizedCopy } from '../../utils/localization.js';
 
 export default function Navbar() {
   const [cartOpen, setCartOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
   const discoverRef = useRef(null);
   const { itemCount } = useCart();
+  const { country } = useCountry();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -47,7 +50,7 @@ export default function Navbar() {
           <span className="block font-heading text-xl tracking-wide text-gold">HABIBI</span>
           <span className="block text-[9px] uppercase tracking-[0.18em] text-muted">Infinity Imports</span>
         </Link>
-        <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
+        <nav aria-label={localizedCopy(country, 'Main navigation', 'Urambazaji mkuu')} className="hidden items-center gap-7 md:flex">
           <div className="relative" ref={discoverRef}>
             <button
               aria-controls="discover-menu"
@@ -56,7 +59,7 @@ export default function Navbar() {
               onClick={() => setDiscoverOpen((open) => !open)}
               type="button"
             >
-              Discover <FiChevronDown aria-hidden="true" />
+              {localizedCopy(country, 'Discover', 'Gundua')} <FiChevronDown aria-hidden="true" />
             </button>
             {discoverOpen && (
               <div className="fixed left-1/2 top-[76px] z-[60] w-[min(900px,calc(100vw-2rem))] -translate-x-1/2 pt-3" id="discover-menu">
@@ -64,8 +67,8 @@ export default function Navbar() {
               </div>
             )}
           </div>
-          <Link className="text-sm text-ivory hover:text-gold" to="/shop">Shop all</Link>
-          <Link className="text-sm text-ivory hover:text-gold" to="/shop?sort=newest">New arrivals</Link>
+          <Link className="text-sm text-ivory hover:text-gold" to="/shop">{localizedCopy(country, 'Shop all', 'Nunua zote')}</Link>
+          <Link className="text-sm text-ivory hover:text-gold" to="/shop?sort=newest">{localizedCopy(country, 'New arrivals', 'Zilizowasili karibuni')}</Link>
         </nav>
         <SearchBar className="hidden w-56 lg:block" />
         <div className="hidden md:block"><CountrySwitcher /></div>
@@ -77,7 +80,7 @@ export default function Navbar() {
             <FiShoppingBag aria-hidden="true" />
             {itemCount > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[10px] font-bold text-obsidian">{itemCount}</span>}
           </button>
-          <Button className="hidden min-h-10 px-4 md:inline-flex" to="/shop">Shop now</Button>
+          <Button className="hidden min-h-10 px-4 md:inline-flex" to="/shop">{localizedCopy(country, 'Shop now', 'Nunua sasa')}</Button>
         </div>
       </div>
       <div className="page-shell pb-3 md:hidden">
