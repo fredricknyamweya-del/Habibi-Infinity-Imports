@@ -19,7 +19,7 @@ export default function Payment({ method, onMethodChange, phone, onPhoneChange, 
           </label>
         ))}
       </div>
-      {method === 'mpesa' && <div className="mt-5"><Input autoComplete="tel" id="mpesa-phone" label={`${localizedCopy(country, 'M-Pesa phone number', 'Nambari ya simu ya M-Pesa')} (${currency})`} onChange={(event) => onPhoneChange(event.target.value)} placeholder="+254..." required type="tel" value={phone} /></div>}
+      {method === 'mpesa' && <div className="mt-5"><Input autoComplete="tel" id="mpesa-phone" label={`${localizedCopy(country, 'M-Pesa phone number', 'Nambari ya simu ya M-Pesa')} (${currency})`} onChange={(event) => onPhoneChange(event.target.value)} placeholder={country === 'TZ' ? '+255...' : '+254...'} required type="tel" value={phone} /></div>}
       {method === 'card' && <p className="mt-4 rounded-lg border border-gold/20 bg-gold/5 p-3 text-xs text-gold">{localizedCopy(country, 'Card payments are coming soon. Choose M-Pesa or cash on delivery to complete your order.', 'Malipo kwa kadi yatapatikana hivi karibuni. Chagua M-Pesa au ulipie unapopokea ili kukamilisha oda yako.')}</p>}
     </section>
   );
