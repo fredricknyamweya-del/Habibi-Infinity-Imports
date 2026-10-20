@@ -54,7 +54,6 @@ export default function HeroShowcase() {
             </div>
             <div className="page-shell flex min-h-[540px] items-center py-16 md:min-h-[570px]">
               <div className="max-w-2xl">
-                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.3em] text-gold">{localizedCopy(country, 'A world of beautiful finds', 'Dunia ya bidhaa nzuri')}</p>
                 <motion.h1
                   animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                   className="font-heading text-5xl leading-[1.1] text-ivory sm:text-6xl lg:text-7xl"
