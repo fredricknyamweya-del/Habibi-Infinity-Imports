@@ -14,6 +14,7 @@ import { useCountry } from '../context/CountryContext.jsx';
 import { formatCurrency, getProductPrice } from '../utils/formatCurrency.js';
 import { mockProducts } from '../data/products.js';
 import WishlistButton from '../components/catalog/WishlistButton.jsx';
+import { localizedCopy } from '../utils/localization.js';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -69,7 +70,7 @@ export default function ProductDetail() {
             </div>
           </div>
           <div className="mt-8 flex gap-3">
-            <Button className="flex-1" disabled={product.stock < 1} onClick={addToCart}>Add to cart</Button>
+            <Button className="flex-1" disabled={product.stock < 1} onClick={addToCart}>{localizedCopy(country, 'Add to cart', 'Ongeza kwenye kikapu')}</Button>
             <WishlistButton className="h-12 w-12" product={product} />
           </div>
           <div className="mt-6"><DeliveryEstimate /></div>

@@ -7,6 +7,7 @@ import { formatCurrency, getProductPrice } from '../../utils/formatCurrency.js';
 import Badge from '../ui/Badge.jsx';
 import Button from '../ui/Button.jsx';
 import WishlistButton from './WishlistButton.jsx';
+import { localizedCopy } from '../../utils/localization.js';
 
 export default function ProductCard({ product }) {
   const { country } = useCountry();
@@ -36,12 +37,12 @@ export default function ProductCard({ product }) {
           <span aria-label={`${product.rating} out of 5 stars`} className="text-xs text-muted">★ {product.rating}</span>
         </div>
         <Button
-          aria-label={`Add ${product.name} to cart`}
+          aria-label={`${localizedCopy(country, 'Add', 'Ongeza')} ${product.name} ${localizedCopy(country, 'to cart', 'kwenye kikapu')}`}
           className="mt-3 w-full"
           disabled={product.stock < 1}
           onClick={handleAddToCart}
         >
-          {product.stock < 1 ? 'Out of stock' : 'Add to cart'}
+          {product.stock < 1 ? localizedCopy(country, 'Out of stock', 'Haipo dukani') : localizedCopy(country, 'Add to cart', 'Ongeza kwenye kikapu')}
         </Button>
       </div>
     </article>

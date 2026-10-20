@@ -6,7 +6,7 @@ export default function CountrySwitcher({ className = '', compact = false }) {
   const id = useId();
 
   return (
-    <label className={`inline-flex ${compact ? 'items-center' : 'flex-col items-start gap-1'} text-xs text-muted ${className}`} htmlFor={id}>
+    <label className={`inline-flex ${compact ? 'items-center' : 'flex-col items-center gap-1'} text-xs text-muted ${className}`} htmlFor={id}>
       <span className={compact ? 'sr-only' : ''}>Select Country</span>
       <select
         id={id}
