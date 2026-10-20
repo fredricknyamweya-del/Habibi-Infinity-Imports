@@ -12,7 +12,7 @@ import SectionTitle from '../components/ui/SectionTitle.jsx';
 import { categories } from '../config/site.js';
 import { useCountry } from '../context/CountryContext.jsx';
 import AdSlot from '../components/ads/AdSlot.jsx';
-import { localizedCopy } from '../utils/localization.js';
+import { localizedCategoryName, localizedCopy, localizedSubcategoryName } from '../utils/localization.js';
 
 export default function Catalogue() {
   const { slug } = useParams();
@@ -25,9 +25,9 @@ export default function Catalogue() {
   const { country } = useCountry();
   const category = categories.find((item) => item.slug === slug);
   const params = useMemo(() => Object.fromEntries(searchParams.entries()), [searchParams]);
-  const heading = category?.name || localizedCopy(country, 'Shop all', 'Nunua bidhaa zote');
+  const heading = localizedCategoryName(country, category?.name || localizedCopy(country, 'Shop all', 'Nunua bidhaa zote'));
   const description = category
-    ? localizedCopy(country, `${category.subcategories.join(' · ')} — curated pieces chosen with care.`, `${category.subcategories.join(' · ')} — bidhaa zilizochaguliwa kwa uangalifu.`)
+    ? localizedCopy(country, `${category.subcategories.join(' · ')} — curated pieces chosen with care.`, `${category.subcategories.map((name) => localizedSubcategoryName(country, name)).join(' · ')} — bidhaa zilizochaguliwa kwa uangalifu.`)
     : localizedCopy(country, 'A considered collection of finds sourced from around the world.', 'Mkusanyiko wa bidhaa zilizochaguliwa kutoka sehemu mbalimbali duniani.');
 
   useEffect(() => {

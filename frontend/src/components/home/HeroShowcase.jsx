@@ -81,8 +81,13 @@ export default function HeroShowcase() {
                 className="absolute bottom-10 right-10 hidden w-52 rounded-card border border-gold/30 bg-charcoal/80 p-3 shadow-glow backdrop-blur xl:block xl:right-20"
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <Link aria-label="Explore the Habibi edit" className="block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold" to="/shop?sort=newest">
-                  <img alt="A curated fashion look" className="h-48 w-full rounded-lg object-cover" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=500&q=85" />
+                <svg aria-hidden="true" className="pointer-events-none absolute -top-28 left-1/2 h-28 w-7 -translate-x-1/2 overflow-visible drop-shadow-[0_2px_3px_rgba(0,0,0,0.6)]" fill="none" viewBox="0 0 28 112">
+                  <path d="M14 0v14c0 5 10 5 10 11v5H4v-5c0-6 10-6 10-11" stroke="#d4b978" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
+                  <path d="M5 30h18l-2 7H7z" fill="#d4b978" />
+                  <path d="M14 37v75" stroke="#d4b978" strokeLinecap="round" strokeOpacity=".8" strokeWidth="2" />
+                </svg>
+                <Link aria-label={localizedCopy(country, 'Explore the Habibi edit', 'Gundua chaguo la Habibi')} className="block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold" to="/shop?sort=newest">
+                  <img alt={localizedCopy(country, 'A curated fashion look', 'Mwonekano wa mitindo uliochaguliwa kwa umakini')} className="h-48 w-full rounded-lg object-cover" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=500&q=85" />
                   <p className="mt-3 text-xs uppercase tracking-widest text-gold">{localizedCopy(country, 'Curated for you', 'Tumechagua kwa ajili yako')}</p>
                   <p className="mt-1 font-heading text-lg">{localizedCopy(country, 'The edit', 'Chaguo letu')} <span aria-hidden="true">↗</span></p>
                 </Link>

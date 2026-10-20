@@ -3,7 +3,7 @@ import { FiChevronDown, FiX } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { categories } from '../../config/site.js';
 import { useCountry } from '../../context/CountryContext.jsx';
-import { localizedCategoryName, localizedCopy } from '../../utils/localization.js';
+import { localizedCategoryName, localizedCopy, localizedSubcategoryName } from '../../utils/localization.js';
 
 export default function FilterSidebar({ params, onChange, onClear, open = false, onClose }) {
   const { country } = useCountry();
@@ -21,7 +21,7 @@ export default function FilterSidebar({ params, onChange, onClear, open = false,
           <div key={category.slug}>
             <Link className={`block rounded-md py-2 text-xs ${params.category === category.slug ? 'text-gold' : 'text-ivory hover:text-gold'}`} to={`/category/${category.slug}`}>{category.number} <span className="ml-2">{localizedCategoryName(country, category.name)}</span></Link>
             {params.category === category.slug && <div className="flex flex-wrap gap-1 pb-2 pl-6">{category.subcategories.map((subcategory) => (
-              <button className={`rounded-full px-2 py-1 text-[10px] ${params.subcategory === subcategory ? 'bg-gold/15 text-gold' : 'text-muted hover:text-ivory'}`} key={subcategory} onClick={() => update('subcategory', params.subcategory === subcategory ? '' : subcategory)} type="button">{subcategory}</button>
+              <button className={`rounded-full px-2 py-1 text-[10px] ${params.subcategory === subcategory ? 'bg-gold/15 text-gold' : 'text-muted hover:text-ivory'}`} key={subcategory} onClick={() => update('subcategory', params.subcategory === subcategory ? '' : subcategory)} type="button">{localizedSubcategoryName(country, subcategory)}</button>
             ))}</div>}
           </div>
         ))}</div>}

@@ -7,7 +7,7 @@ import { formatCurrency, getProductPrice } from '../../utils/formatCurrency.js';
 import Badge from '../ui/Badge.jsx';
 import Button from '../ui/Button.jsx';
 import WishlistButton from './WishlistButton.jsx';
-import { localizedCopy } from '../../utils/localization.js';
+import { localizedCategoryName, localizedCopy } from '../../utils/localization.js';
 
 export default function ProductCard({ product }) {
   const { country } = useCountry();
@@ -18,7 +18,7 @@ export default function ProductCard({ product }) {
   const handleAddToCart = () => {
     const variant = variants[0] || '';
     addItem(product, 1, variant);
-    toast.success(`${product.name} added to your cart`);
+    toast.success(`${product.name} ${localizedCopy(country, 'added to your cart', 'imeongezwa kwenye kikapu chako')}`);
   };
 
   return (
@@ -30,7 +30,7 @@ export default function ProductCard({ product }) {
       </Link>
       <WishlistButton className="absolute right-3 top-3" product={product} />
       <div className="pt-3">
-        <p className="text-[10px] uppercase tracking-[0.16em] text-muted">{product.categoryName}</p>
+        <p className="text-[10px] uppercase tracking-[0.16em] text-muted">{localizedCategoryName(country, product.categoryName)}</p>
         <Link className="mt-1 block truncate font-heading text-lg text-ivory hover:text-gold" to={`/product/${product.id}`}>{product.name}</Link>
         <div className="mt-1 flex items-center justify-between gap-2">
           <span className="text-sm font-semibold text-gold">{formatCurrency(getProductPrice(product, country), country)}</span>
