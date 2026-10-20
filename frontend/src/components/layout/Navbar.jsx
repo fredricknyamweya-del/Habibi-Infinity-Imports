@@ -47,8 +47,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 border-b border-white/10 bg-obsidian/95 backdrop-blur">
       <div className="page-shell flex h-16 items-center justify-between gap-2 md:h-[76px] md:gap-5">
         <Link aria-label={`${site.name} ${localizedCopy(country, 'home', 'mwanzo')}`} className="shrink-0" to="/">
-          <span className="block font-heading text-xl tracking-wide text-gold">HABIBI</span>
-          <span className="block text-[9px] uppercase tracking-[0.18em] text-muted">Infinity Imports</span>
+          <span className="block font-heading text-2xl tracking-wide text-gold md:text-3xl">HABIBI</span>
+          <span className="block text-[10px] uppercase tracking-[0.18em] text-muted">Infinity Imports</span>
         </Link>
         <nav aria-label={localizedCopy(country, 'Main navigation', 'Urambazaji mkuu')} className="hidden items-center gap-7 md:flex">
           <div className="relative" ref={discoverRef}>

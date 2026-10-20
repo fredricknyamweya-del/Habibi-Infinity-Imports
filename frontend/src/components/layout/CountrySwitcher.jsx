@@ -1,6 +1,5 @@
 import { useId } from 'react';
 import { useCountry } from '../../context/CountryContext.jsx';
-import { localizedCopy } from '../../utils/localization.js';
 
 export default function CountrySwitcher({ className = '', compact = false }) {
   const { country, setCountry } = useCountry();
@@ -8,10 +7,10 @@ export default function CountrySwitcher({ className = '', compact = false }) {
 
   return (
     <label className={`inline-flex ${compact ? 'items-center' : 'flex-col items-center gap-1'} text-xs text-muted ${className}`} htmlFor={id}>
-      <span className={compact ? 'sr-only' : ''}>{localizedCopy(country, 'Select Country', 'Chagua nchi')}</span>
+      <span className={compact ? 'sr-only' : ''}>{country === 'KE' ? 'Chagua Nchi' : 'Select Country'}</span>
       <select
         id={id}
-        aria-label={compact ? localizedCopy(country, 'Select country and currency', 'Chagua nchi na sarafu') : undefined}
+        aria-label={compact ? (country === 'KE' ? 'Chagua nchi na sarafu' : 'Select country and currency') : undefined}
         className={`h-10 rounded-full border border-line bg-charcoal font-semibold text-xs text-ivory [color-scheme:dark] focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40 ${compact ? 'w-[76px] px-1.5 text-[10px]' : 'px-3'}`}
         onChange={(event) => setCountry(event.target.value)}
         value={country}
