@@ -95,6 +95,35 @@ html[data-theme='light'] .bg-obsidian\/80 {
   background-color: rgb(var(--color-obsidian) / 0.85);
 }
 
+html[data-theme='light'] .animate-pulse {
+  background-color: rgb(var(--color-border)) !important;
+}
+
+html[data-theme='light'] .text-red-200,
+html[data-theme='light'] .text-red-300 {
+  color: rgb(153 27 27) !important;
+}
+
+html[data-theme='light'] .text-emerald-300 {
+  color: rgb(4 120 87) !important;
+}
+
+html[data-theme='light'] .bg-red-400\/10 {
+  background-color: rgb(254 226 226) !important;
+}
+
+html[data-theme='light'] .border-red-400\/30 {
+  border-color: rgb(248 113 113 / 0.55) !important;
+}
+
+html[data-theme='light'] .bg-white\/5 {
+  background-color: rgb(var(--color-border) / 0.5);
+}
+
+html[data-theme='light'] .hover\:bg-white\/10:hover {
+  background-color: rgb(var(--color-border) / 0.8);
+}
+
 html[data-theme='dark'] .text-muted {
   color: rgb(var(--color-muted)) !important;
 }

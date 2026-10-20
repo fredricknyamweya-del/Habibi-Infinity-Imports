@@ -6,13 +6,13 @@
   --font-display: "Povie", "Permanent Marker", cursive;
   --color-obsidian: 248 247 243;
   --color-charcoal: 255 255 255;
-  --color-gold: 139 105 35;
-  --color-gold-soft: 111 82 24;
+  --color-gold: 125 91 24;
+  --color-gold-soft: 101 73 17;
   --color-ivory: 30 30 28;
   --color-muted: 78 77 72;
   --color-border: 226 223 215;
   --color-glass: 255 255 255;
-  --shadow-glow: 0 0 28px rgb(139 105 35 / 0.13);
+  --shadow-glow: 0 0 28px rgb(125 91 24 / 0.16);
 }
 
 :root[data-theme='dark'] {

@@ -62,7 +62,7 @@ export default function Home() {
         </div>
       </section>
       <ProductSection action={<Link className="text-sm text-gold" to="/shop">{localizedCopy(country, 'Shop popular', 'Nunua zinazopendwa')} ↗</Link>} eyebrow={localizedCopy(country, 'Loved by our community', 'Zinazopendwa na wateja wetu')} items={products.slice(0, 8)} loading={loading} title={localizedCopy(country, 'Popular right now', 'Zinazopendwa sasa hivi')} />
-      <section className="my-8 overflow-hidden rounded-card border border-gold/20 bg-gradient-to-r from-charcoal to-[#27231b] p-7 sm:p-10">
+      <section className="my-8 overflow-hidden rounded-card border border-gold/20 bg-gradient-to-r from-charcoal to-obsidian p-7 sm:p-10">
         <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
           <div><p className="text-xs uppercase tracking-[0.2em] text-gold">{localizedCopy(country, 'A little something special', 'Kitu maalum kwa ajili yako')}</p><h2 className="mt-2 font-heading text-3xl">{localizedCopy(country, 'Your next favourite is waiting.', 'Kipenzi chako kipya kinakusubiri.')}</h2><p className="mt-2 text-sm text-muted">{localizedCopy(country, 'Discover new arrivals and thoughtful finds, chosen just for you.', 'Gundua bidhaa mpya na zilizochaguliwa kwa uangalifu kwa ajili yako.')}</p></div>
           <Link className="rounded-full border border-gold/50 px-5 py-3 text-sm text-gold hover:bg-gold hover:text-obsidian" to="/shop?sort=newest">{localizedCopy(country, 'Explore new arrivals', 'Gundua zilizowasili karibuni')}</Link>
