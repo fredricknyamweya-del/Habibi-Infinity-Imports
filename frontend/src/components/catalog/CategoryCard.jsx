@@ -1,7 +1,10 @@
 import { FiArrowUpRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { useCountry } from '../../context/CountryContext.jsx';
+import { localizedCategoryName } from '../../utils/localization.js';
 
 export default function CategoryCard({ category, index = 0, tabIndex }) {
+  const { country } = useCountry();
   return (
     <Link
       className="group relative isolate flex min-h-56 w-[min(76vw,260px)] shrink-0 overflow-hidden rounded-card border border-gold/20 bg-charcoal p-5 transition hover:border-gold hover:shadow-glow sm:w-[260px]"
@@ -16,7 +19,7 @@ export default function CategoryCard({ category, index = 0, tabIndex }) {
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent" />
       <span className="mt-auto flex w-full items-end justify-between gap-2">
-        <span><span className="mb-2 block text-sm font-semibold text-gold">{category.number}</span><span className="font-heading text-xl text-ivory">{category.name}</span></span>
+        <span><span className="mb-2 block text-sm font-semibold text-gold">{category.number}</span><span className="font-heading text-xl text-ivory">{localizedCategoryName(country, category.name)}</span></span>
         <FiArrowUpRight aria-hidden="true" className="mb-1 text-xl text-gold transition group-hover:-translate-y-1 group-hover:translate-x-1" />
       </span>
     </Link>
