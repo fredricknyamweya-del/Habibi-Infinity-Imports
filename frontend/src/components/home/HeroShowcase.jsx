@@ -31,7 +31,7 @@ export default function HeroShowcase() {
   return (
     <section
       aria-label={localizedCopy(country, 'Featured collections', 'Mikusanyiko iliyochaguliwa')}
-      className="relative isolate overflow-hidden rounded-card border border-gold/20 bg-charcoal"
+      className="hero-showcase relative isolate overflow-hidden rounded-card border border-gold/20 bg-charcoal"
       onMouseEnter={() => swiper?.autoplay?.stop()}
       onMouseLeave={() => !reducedMotion && swiper?.autoplay?.start()}
     >
@@ -57,7 +57,7 @@ export default function HeroShowcase() {
               <div className="mt-8 max-w-2xl">
                 <motion.h1
                   animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  className="font-heading text-5xl leading-[1.1] text-ivory sm:text-6xl lg:text-7xl"
+                  className="font-heading text-5xl leading-[1.1] text-white sm:text-6xl lg:text-7xl"
                   initial={reducedMotion ? undefined : { opacity: 0, y: 22 }}
                   transition={{ duration: 0.75, delay: 0.12 }}
                 >
@@ -66,7 +66,7 @@ export default function HeroShowcase() {
                 <p className="mt-6 max-w-lg text-base leading-7 text-white md:text-lg">{isSwahili ? ['Gundua bidhaa zilizochaguliwa kwa maisha yako.', 'Pata kipenzi chako kipya, kilicholetwa kutoka duniani kote.', 'Anasa kidogo, ikiletwa hadi mlangoni kwako.'][active] : slide.subtitle}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Button to="/shop">{localizedCopy(country, 'Explore the collection', 'Gundua mkusanyiko')}</Button>
-                  <Button to="/shop?sort=newest" variant="ghost">{localizedCopy(country, 'New arrivals', 'Zilizowasili karibuni')}</Button>
+                  <Button className="hero-ghost" to="/shop?sort=newest" variant="ghost">{localizedCopy(country, 'New arrivals', 'Zilizowasili karibuni')}</Button>
                 </div>
                 <div className="mt-9 flex gap-2" role="group" aria-label={localizedCopy(country, 'Choose featured slide', 'Chagua ukurasa wa picha')}>
                   {slides.map((item, dotIndex) => (

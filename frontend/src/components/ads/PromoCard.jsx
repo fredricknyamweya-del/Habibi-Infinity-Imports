@@ -9,8 +9,8 @@ export default function PromoCard({ ad }) {
     <Link className="group relative isolate flex min-h-64 flex-col justify-end overflow-hidden rounded-card border border-gold/20 bg-charcoal p-5 transition hover:border-gold hover:shadow-glow" to={ad.href || '/shop'}>
       <img alt="" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-45 transition duration-500 group-hover:scale-105 group-hover:opacity-60" loading="lazy" src={ad.image} />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
-      <Badge className="mb-3 w-fit">Sponsored</Badge>
-      <h2 className="font-heading text-2xl">{localizedAdText(country, ad, 'title')}</h2>
+      <Badge className="promo-card-copy mb-3 w-fit">Sponsored</Badge>
+      <h2 className="font-heading text-2xl text-white">{localizedAdText(country, ad, 'title')}</h2>
       <p className="mt-2 text-sm text-white">{localizedAdText(country, ad, 'description')}</p>
     </Link>
   );

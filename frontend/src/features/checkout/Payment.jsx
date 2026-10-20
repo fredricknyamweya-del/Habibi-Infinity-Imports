@@ -14,7 +14,7 @@ export default function Payment({ method, onMethodChange, phone, onPhoneChange, 
       <div className="grid gap-3">
         {methods.map((item) => (
           <label className={`flex cursor-pointer items-start gap-3 rounded-card border p-4 ${method === item.id ? 'border-gold bg-gold/5' : 'border-white/10 bg-charcoal'}`} key={item.id}>
-            <input checked={method === item.id} className="mt-1 accent-[#D4B978]" name="payment-method" onChange={() => onMethodChange(item.id)} type="radio" />
+            <input checked={method === item.id} className="mt-1 accent-gold" name="payment-method" onChange={() => onMethodChange(item.id)} type="radio" />
             <span><span className="block text-sm font-semibold">{item.title}</span><span className="mt-1 block text-xs text-muted">{item.detail}</span></span>
           </label>
         ))}

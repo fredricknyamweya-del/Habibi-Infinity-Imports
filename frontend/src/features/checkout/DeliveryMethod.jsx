@@ -16,7 +16,7 @@ export default function DeliveryMethod({ country, value, onChange }) {
       <div className="grid gap-3">
         {options(country).map((option) => (
           <label className={`flex cursor-pointer items-start gap-3 rounded-card border p-4 transition ${value === option.id ? 'border-gold bg-gold/5' : 'border-white/10 bg-charcoal hover:border-white/25'}`} key={option.id}>
-            <input checked={value === option.id} className="mt-1 accent-[#D4B978]" name="delivery-method" onChange={() => onChange(option.id)} type="radio" />
+            <input checked={value === option.id} className="mt-1 accent-gold" name="delivery-method" onChange={() => onChange(option.id)} type="radio" />
             <span className="flex-1"><span className="flex justify-between gap-3 text-sm font-semibold"><span>{option.label}</span><span className="text-gold">{formatCurrency(DELIVERY_OPTIONS[country][option.id], country)}</span></span><span className="mt-1 block text-xs text-muted">{option.description} · {option.estimate}</span></span>
           </label>
         ))}
